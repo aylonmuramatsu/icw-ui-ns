@@ -1,0 +1,12 @@
+{
+  "name": "@mono/utils",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

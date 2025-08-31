@@ -1,0 +1,16 @@
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "description": "monorepo example",
+  "keywords": [],
+  "scripts": {
+    "start": "pnpm run --filter playground start",
+    "test": "pnpm run -r test"
+  },
+  "author": "aylon.muramatsu@gmail.com",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.0",
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}
