@@ -1,4 +1,4 @@
-import { Button } from '@mono/ui';
+import { Button } from '@icw/ui';
 
 export interface ComponentVariant {
   name: string;

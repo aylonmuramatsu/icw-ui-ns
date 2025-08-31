@@ -35,10 +35,10 @@ importers:
 
   playground:
     dependencies:
-      '@mono/ui':
+      '@icw/ui':
         specifier: workspace:*
         version: link:../packages/ui
-      '@mono/utils':
+      '@icw/utils':
         specifier: workspace:*
         version: link:../packages/utils
     devDependencies:

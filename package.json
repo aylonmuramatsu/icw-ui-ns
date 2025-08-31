@@ -1,6 +1,6 @@
 {
-  "name": "monorepo",
-  "version": "1.0.0",
+  "name": "icw-ui-ns",
+  "version": "0.0.1",
   "description": "monorepo example",
   "keywords": [],
   "scripts": {

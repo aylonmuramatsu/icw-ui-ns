@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "@icw/playground",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -10,8 +10,8 @@
     "postcss-loader": "^7.0.1"
   },
   "dependencies":{
-    "@mono/ui": "workspace:*",
-    "@mono/utils": "workspace:*"
+    "@icw/ui": "workspace:*",
+    "@icw/utils": "workspace:*"
   },
   "scripts": {
     "start": "npx nullstack start",
