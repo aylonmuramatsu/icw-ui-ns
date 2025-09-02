@@ -146,15 +146,17 @@ function generateTypographyUtilities() {
  * Plugin principal para ser usado no tailwind.config.js
  */
 function icwThemePlugin(options = {}) {
-  return function({ addBase, addUtilities, config, theme, addComponents }) {
-    const mergedConfig = {
-      themes: Object.keys(defaultThemes),
-      defaultTheme: 'light',
-      ...options,
-    };
+  return {
+    handler: function({ addBase, addUtilities, config, theme, addComponents }) {
+      const mergedConfig = {
+        themes: Object.keys(defaultThemes),
+        defaultTheme: 'light',
+        ...options,
+      };
     
+    // DEBUG: Log das cores sendo geradas
     const themeColors = getThemeColors();
-    console.log(getThemeColors())
+    console.log('🎨 Cores geradas pelo plugin:', Object.keys(themeColors));
     
     // Simular config para o plugin
     const mockConfig = (key) => {
@@ -168,7 +170,7 @@ function icwThemePlugin(options = {}) {
     
     const colorUtilities = {};
 
-    // Gera .border-{color} para todas as cores do tema, inclusive info, success, warning, error, etc
+    // Gerar utilities com prioridade maior para borders
     Object.entries(themeColors).forEach(([colorName, colorValue]) => {
       // Background colors
       colorUtilities[`.bg-${colorName}`] = { 
@@ -180,23 +182,23 @@ function icwThemePlugin(options = {}) {
         'color': colorValue 
       };
       
-      // Border colors
+      // Border colors - APENAS COR para não conflitar com border-2
       colorUtilities[`.border-${colorName}`] = { 
-        'border-color': colorValue 
+        'border-color': colorValue
       };
 
-      // Helpers para border individual (top, right, bottom, left)
+      // Border individual com prioridade
       colorUtilities[`.border-t-${colorName}`] = {
-        'border-top-color': colorValue
+        'border-top-color': `${colorValue} !important`
       };
       colorUtilities[`.border-r-${colorName}`] = {
-        'border-right-color': colorValue
+        'border-right-color': `${colorValue} !important`
       };
       colorUtilities[`.border-b-${colorName}`] = {
-        'border-bottom-color': colorValue
+        'border-bottom-color': `${colorValue} !important`
       };
       colorUtilities[`.border-l-${colorName}`] = {
-        'border-left-color': colorValue
+        'border-left-color': `${colorValue} !important`
       };
 
       // Adiciona helpers para border-x e border-y
@@ -245,8 +247,66 @@ function icwThemePlugin(options = {}) {
       };
     });
     
-    // Adicionar todas as utilities de cores
+    // Também adicionar via componentes para maior compatibilidade
+    const borderComponents = {};
+    const ringComponents = {};
+    
+    Object.entries(themeColors).forEach(([colorName, colorValue]) => {
+      // Border components - APENAS COR, não width/style
+      borderComponents[`.border-${colorName}`] = {
+        'border-color': colorValue
+      };
+
+      console.log(borderComponents)
+      
+      // Ring components para garantir compatibilidade
+      ringComponents[`.ring-${colorName}`] = {
+        '--tw-ring-color': colorValue,
+        '--tw-ring-opacity': '1'
+      };
+    });
+
+    addComponents(borderComponents);
+    addComponents(ringComponents);
     addUtilities(colorUtilities);
+
+    console.log('🎨 Classes border geradas:', Object.keys(borderComponents));
+    console.log('🎨 Classes ring geradas:', Object.keys(ringComponents));
+    },
+    // 🛡️ Safelist automático para garantir que as classes de tema nunca sejam removidas
+    config: {
+      safelist: [
+        // Classes de cores básicas
+        { pattern: /^bg-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^text-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^border-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^ring-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^ring-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)\/\d+$/ },
+        { pattern: /^ring-offset-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        
+        // Classes de bordas direcionais
+        { pattern: /^border-[trbl]-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^border-[xy]-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        
+        // Classes de decoração
+        { pattern: /^decoration-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^outline-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^placeholder-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^caret-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^accent-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        { pattern: /^divide-(primary|secondary|accent|neutral|base-\d+|base-content|info|success|warning|error|default|muted|disabled|overlay|background|surface|border|input-text)$/ },
+        
+        // Classes de tema semânticas
+        'theme-primary', 'theme-secondary', 'theme-accent', 'theme-neutral',
+        'theme-base-100', 'theme-base-200', 'theme-base-300',
+        'theme-info', 'theme-success', 'theme-warning', 'theme-error',
+        
+        // Classes de tipografia
+        'heading-1', 'heading-2', 'heading-3', 'heading-4', 'heading-5', 'heading-6',
+        'body-large', 'body-medium', 'body-small', 'caption', 'button-text', 'input-text',
+        'display-large', 'label-small',
+      ]
+    }
   };
 }
 

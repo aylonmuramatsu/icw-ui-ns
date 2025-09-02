@@ -33,7 +33,6 @@ const customThemes = {
     extras: {
       background: '#FFFFFF',    // Fundo alternativo
       surface: '#FFFFFF',       // Superfície
-      border: '#e5e7eb',        // Bordas
       'input-text': '#1A202C',  // Texto inputs
     }
   }
