@@ -8,7 +8,7 @@ class Application extends Nullstack {
   renderHead() {
     return (
       <head>
-        <title>Teste Manual de Temas</title>
+        <title>Playground</title>
         <link href="https://fonts.gstatic.com" rel="preconnect" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
@@ -20,7 +20,7 @@ class Application extends Nullstack {
 
   render() {
     return (
-      <body class="min-h-screen bg-base-100 text-base-content p-8">
+      <body class="min-h-screen bg-backgroud text-base-content">
         <Head />
         <AppLayout />
       </body>

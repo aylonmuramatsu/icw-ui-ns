@@ -12,57 +12,41 @@ export interface ComponentConfig {
   description: string;
   icon: string;
   component: ((props: any) => NullstackNode) | string;
-  variants: Record<string, ComponentVariant>;
+  configs: Record<string, string[]>;
 }
 
 // Configuração dos componentes do playground
 export const componentsConfig: Record<string, ComponentConfig> = {
   button: {
-    name: 'Button',
+    name: 'Button2',
     description: 'Botões com diferentes variações',
     icon: '🎯',
-    component: (props) => <Button {...props}>Teste</Button>,
-    variants: {
-      default: {
-        name: 'Default',
-        props: { children: 'Botão Padrão' },
-      },
-      primary: {
-        name: 'Primary',
-        props: {
-          children: 'Botão Primary',
-          variant: 'primary',
-        },
-      },
-      secondary: {
-        name: 'Secondary',
-        props: {
-          children: 'Botão Secondary',
-          variant: 'secondary',
-        },
-      },
+    component: (props) => <Button {...props}>Button</Button>,
+    configs: {
+      variant: ['solid', 'outline', 'ghost'],
+      color: ['primary', 'secondary', 'danger', 'success', 'info', 'warning'],
     },
   },
-  input: {
-    name: 'Input',
-    description: 'Campos de entrada',
-    icon: '📝',
-    component: 'input',
-    variants: {
-      default: {
-        name: 'Default',
-        props: {
-          type: 'text',
-          placeholder: 'Digite algo...',
-        },
-      },
-      email: {
-        name: 'Email',
-        props: {
-          type: 'email',
-          placeholder: 'seu@email.com',
-        },
-      },
-    },
-  },
+  // input: {
+  //   name: 'Input',
+  //   description: 'Campos de entrada',
+  //   icon: '📝',
+  //   component: 'input',
+  //   variants: {
+  //     default: {
+  //       name: 'Default',
+  //       props: {
+  //         type: 'text',
+  //         placeholder: 'Digite algo...',
+  //       },
+  //     },
+  //     email: {
+  //       name: 'Email',
+  //       props: {
+  //         type: 'email',
+  //         placeholder: 'seu@email.com',
+  //       },
+  //     },
+  //   },
+  // },
 };

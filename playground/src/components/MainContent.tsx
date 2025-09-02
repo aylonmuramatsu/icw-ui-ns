@@ -1,54 +1,27 @@
 import Nullstack from 'nullstack';
 import { componentsConfig } from '../components-config';
-import { ComponentExamples } from './ComponentExamples';
+import { ComponentCanvas } from './ComponentCanvas';
 import { ComponentHeader } from './ComponentHeader';
 import { ComponentVariants } from './ComponentVariants';
-import { TokensScreen } from './TokensScreen';
-
-interface MainContentProps {
-  selectedComponent: string;
-  selectedVariant: string;
-  showTokensManager: boolean;
-  isDarkMode: boolean;
-  onSelectVariant: (variant: string) => void;
-}
 
 export class MainContent extends Nullstack {
-  render({
-    selectedComponent,
-    selectedVariant,
-    showTokensManager,
-    isDarkMode,
-    onSelectVariant,
-  }: MainContentProps) {
-    const currentComponent = componentsConfig[selectedComponent];
+  hydrate({ selected_component, ...context }: any) {
+    context.current_component = componentsConfig[selected_component];
+  }
+
+  render(context: any) {
+    const { selected_component } = context;
 
     return (
       <main class="flex-1 p-8">
-        {showTokensManager ? (
-          <TokensScreen isDarkMode={isDarkMode} />
-        ) : (
-          currentComponent && (
-            <div>
-              <ComponentHeader
-                component={currentComponent}
-                isDarkMode={isDarkMode}
-              />
-              <ComponentVariants
-                component={currentComponent}
-                selectedVariant={selectedVariant}
-                isDarkMode={isDarkMode}
-                onSelectVariant={onSelectVariant}
-              />
-              <ComponentExamples
-                component={currentComponent}
-                isDarkMode={isDarkMode}
-              />
-            </div>
-          )
+        {selected_component && (
+          <div class="w-full">
+            <ComponentHeader />
+            <ComponentVariants />
+            <ComponentCanvas />
+          </div>
         )}
       </main>
     );
   }
 }
-
