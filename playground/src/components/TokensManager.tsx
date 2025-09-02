@@ -1,7 +1,8 @@
+import { defaultTheme } from '@icw/utils';
 import Nullstack, { NullstackNode } from 'nullstack';
 
 interface TokenValue {
-  value: string;
+  value: string | number | object;
   description?: string;
 }
 
@@ -10,132 +11,167 @@ interface TokenCategory {
 }
 
 interface DesignTokens {
-  colors: TokenCategory;
-  typography: TokenCategory;
-  spacing: TokenCategory;
-  shadows: TokenCategory;
+  [key: string]: TokenCategory;
 }
 
 export class TokensManager extends Nullstack {
   selectedTokenType = 'colors';
-  tokens: DesignTokens = {
-    colors: {
-      primary: { value: '#3B82F6', description: 'Primary brand color' },
-      secondary: { value: '#6B7280', description: 'Secondary brand color' },
-      success: { value: '#10B981', description: 'Success state color' },
-      warning: { value: '#F59E0B', description: 'Warning state color' },
-      error: { value: '#EF4444', description: 'Error state color' },
-      gray: { value: '#6B7280', description: 'Neutral gray color' },
-      'gray-50': { value: '#F9FAFB', description: 'Lightest gray' },
-      'gray-100': { value: '#F3F4F6', description: 'Very light gray' },
-      'gray-200': { value: '#E5E7EB', description: 'Light gray' },
-      'gray-300': { value: '#D1D5DB', description: 'Medium light gray' },
-      'gray-400': { value: '#9CA3AF', description: 'Medium gray' },
-      'gray-500': { value: '#6B7280', description: 'Medium dark gray' },
-      'gray-600': { value: '#4B5563', description: 'Dark gray' },
-      'gray-700': { value: '#374151', description: 'Very dark gray' },
-      'gray-800': { value: '#1F2937', description: 'Almost black gray' },
-      'gray-900': { value: '#111827', description: 'Darkest gray' },
-    },
-    typography: {
-      'font-family': {
-        value: 'Inter, system-ui, sans-serif',
-        description: 'Primary font family',
-      },
-      'font-size-xs': { value: '0.75rem', description: 'Extra small text' },
-      'font-size-sm': { value: '0.875rem', description: 'Small text' },
-      'font-size-base': { value: '1rem', description: 'Base text size' },
-      'font-size-lg': { value: '1.125rem', description: 'Large text' },
-      'font-size-xl': { value: '1.25rem', description: 'Extra large text' },
-      'font-size-2xl': { value: '1.5rem', description: '2x large text' },
-      'font-size-3xl': { value: '1.875rem', description: '3x large text' },
-      'font-weight-normal': { value: '400', description: 'Normal font weight' },
-      'font-weight-medium': { value: '500', description: 'Medium font weight' },
-      'font-weight-semibold': {
-        value: '600',
-        description: 'Semibold font weight',
-      },
-      'font-weight-bold': { value: '700', description: 'Bold font weight' },
-      'line-height-tight': { value: '1.25', description: 'Tight line height' },
-      'line-height-normal': { value: '1.5', description: 'Normal line height' },
-      'line-height-relaxed': {
-        value: '1.75',
-        description: 'Relaxed line height',
-      },
-    },
-    spacing: {
-      'space-1': { value: '0.25rem', description: '4px spacing' },
-      'space-2': { value: '0.5rem', description: '8px spacing' },
-      'space-3': { value: '0.75rem', description: '12px spacing' },
-      'space-4': { value: '1rem', description: '16px spacing' },
-      'space-5': { value: '1.25rem', description: '20px spacing' },
-      'space-6': { value: '1.5rem', description: '24px spacing' },
-      'space-8': { value: '2rem', description: '32px spacing' },
-      'space-10': { value: '2.5rem', description: '40px spacing' },
-      'space-12': { value: '3rem', description: '48px spacing' },
-      'space-16': { value: '4rem', description: '64px spacing' },
-      'space-20': { value: '5rem', description: '80px spacing' },
-      'space-24': { value: '6rem', description: '96px spacing' },
-    },
-    shadows: {
-      'shadow-sm': {
-        value: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        description: 'Small shadow',
-      },
-      shadow: {
-        value: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-        description: 'Default shadow',
-      },
-      'shadow-md': {
-        value:
-          '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-        description: 'Medium shadow',
-      },
-      'shadow-lg': {
-        value:
-          '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-        description: 'Large shadow',
-      },
-      'shadow-xl': {
-        value:
-          '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-        description: 'Extra large shadow',
-      },
-      'shadow-2xl': {
-        value: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
-        description: '2x large shadow',
-      },
-    },
-  };
+  tokens: DesignTokens = {};
+  customDescriptions: Record<string, Record<string, string>> = {};
 
-  updateToken(category: keyof DesignTokens, tokenName: string, value: string) {
-    if (this.tokens[category][tokenName]) {
-      this.tokens[category][tokenName].value = value;
+  // Inicializa os tokens baseados no defaultTheme
+  initializeTokens() {
+    const themeTokens: DesignTokens = {};
+
+    // Processa cada categoria do defaultTheme
+    for (const category in defaultTheme) {
+      const categoryData = (defaultTheme as any)[category];
+      themeTokens[category] = {};
+
+      if (typeof categoryData === 'object' && categoryData !== null) {
+        for (const tokenName in categoryData) {
+          const tokenValue = categoryData[tokenName];
+          themeTokens[category][tokenName] = {
+            value: tokenValue,
+            description:
+              this.customDescriptions[category]?.[tokenName] ||
+              this.generateDescription(category, tokenName, tokenValue),
+          };
+        }
+      }
+    }
+
+    this.tokens = themeTokens;
+  }
+
+  // Gera descrições automáticas baseadas no nome e valor do token
+  generateDescription(
+    category: string,
+    tokenName: string,
+    tokenValue: any
+  ): string {
+    // Validação para evitar erros com tokenName undefined/null
+    if (!tokenName || typeof tokenName !== 'string') {
+      return `${category} token`;
+    }
+
+    const name = tokenName.replace(/([A-Z])/g, ' $1').toLowerCase();
+
+    switch (category) {
+      case 'colors':
+        return `${name} color`;
+      case 'typography':
+        if (tokenName.indexOf('heading') !== -1) {
+          return `${name} typography style`;
+        } else if (tokenName.indexOf('body') !== -1) {
+          return `${name} text style`;
+        } else if (tokenName.indexOf('font') !== -1) {
+          return `${name} font property`;
+        } else {
+          return `${name} typography token`;
+        }
+      case 'radius':
+        return `${name} border radius`;
+      case 'spacing':
+        return `${name} spacing value`;
+      case 'shadow':
+        return `${name} shadow effect`;
+      case 'opacity':
+        return `${name} opacity value`;
+      case 'fontFamily':
+        return `${name} font family`;
+      case 'extras':
+        return `${name} extra token`;
+      default:
+        return `${name} ${category} token`;
+    }
+  }
+
+  // Converte valor do token para string para exibição
+  formatTokenValue(value: any): string {
+    if (typeof value === 'object' && value !== null) {
+      if (Array.isArray(value)) {
+        return value.join(', ');
+      } else {
+        return JSON.stringify(value, null, 2);
+      }
+    }
+    return String(value);
+  }
+
+  // Converte string de volta para o tipo original
+  parseTokenValue(originalValue: any, stringValue: string): any {
+    if (typeof originalValue === 'number') {
+      return parseFloat(stringValue) || originalValue;
+    } else if (typeof originalValue === 'object' && originalValue !== null) {
+      if (Array.isArray(originalValue)) {
+        return stringValue.split(',').map((item) => item.trim());
+      } else {
+        try {
+          return JSON.parse(stringValue);
+        } catch {
+          return originalValue;
+        }
+      }
+    }
+    return stringValue;
+  }
+
+  updateToken(category: string, tokenName: string, value: string) {
+    if (this.tokens[category]?.[tokenName]) {
+      const originalValue = (defaultTheme as any)[category]?.[tokenName];
+      const parsedValue = this.parseTokenValue(originalValue, value);
+
+      this.tokens[category][tokenName].value = parsedValue;
       // Force re-render
       this.tokens = { ...this.tokens };
     }
   }
 
   updateTokenDescription(
-    category: keyof DesignTokens,
+    category: string,
     tokenName: string,
     description: string
   ) {
-    if (this.tokens[category][tokenName]) {
+    if (this.tokens[category]?.[tokenName]) {
       this.tokens[category][tokenName].description = description;
+
+      // Salva a descrição customizada
+      if (!this.customDescriptions[category]) {
+        this.customDescriptions[category] = {};
+      }
+      this.customDescriptions[category][tokenName] = description;
+
       // Force re-render
       this.tokens = { ...this.tokens };
     }
   }
 
-  addToken(category: keyof DesignTokens, tokenName: string) {
-    this.tokens[category][tokenName] = { value: '', description: '' };
+  addToken(category: string, tokenName: string) {
+    if (!this.tokens[category]) {
+      this.tokens[category] = {};
+    }
+
+    this.tokens[category][tokenName] = {
+      value:
+        category === 'colors'
+          ? '#000000'
+          : category === 'typography'
+            ? '1rem'
+            : '0',
+      description: `Custom ${tokenName} token`,
+    };
+
     // Force re-render
     this.tokens = { ...this.tokens };
   }
 
-  removeToken(category: keyof DesignTokens, tokenName: string) {
-    delete this.tokens[category][tokenName];
+  removeToken(category: string, tokenName: string) {
+    if (this.tokens[category]?.[tokenName]) {
+      delete this.tokens[category][tokenName];
+      // Force re-render
+      this.tokens = { ...this.tokens };
+    }
   }
 
   exportTokens() {
@@ -143,20 +179,29 @@ export class TokensManager extends Nullstack {
     navigator.clipboard.writeText(tokensString);
   }
 
+  // Detecta se um token é do defaultTheme ou customizado
+  isDefaultToken(category: string, tokenName: string): boolean {
+    return (defaultTheme as any)[category]?.[tokenName] !== undefined;
+  }
+
   renderTokenInput(
-    category: keyof DesignTokens,
+    category: string,
     tokenName: string,
     token: TokenValue | undefined,
     isDarkMode: boolean
   ) {
     if (!token) return null;
+
+    const isDefault = this.isDefaultToken(category, tokenName);
+    const formattedValue = this.formatTokenValue(token.value);
+
     return (
       <div
         class={`p-4 rounded-lg border transition-colors duration-200 ${
           isDarkMode
             ? 'bg-gray-800 border-gray-700'
             : 'bg-white border-gray-200'
-        }`}
+        } ${isDefault ? 'border-l-4 border-l-blue-500' : 'border-l-4 border-l-green-500'}`}
       >
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center space-x-3">
@@ -167,23 +212,35 @@ export class TokensManager extends Nullstack {
             >
               {tokenName}
             </span>
+            {isDefault && (
+              <span class="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
+                Default
+              </span>
+            )}
+            {!isDefault && (
+              <span class="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">
+                Custom
+              </span>
+            )}
             {category === 'colors' && (
               <div
                 class="w-6 h-6 rounded border border-gray-300"
-                style={`background-color: ${token?.value || '#000000'}`}
+                style={`background-color: ${formattedValue}`}
               />
             )}
           </div>
-          <button
-            onclick={() => this.removeToken(category, tokenName)}
-            class={`px-2 py-1 text-xs rounded transition-colors duration-200 ${
-              isDarkMode
-                ? 'text-red-400 hover:bg-red-400/10'
-                : 'text-red-600 hover:bg-red-50'
-            }`}
-          >
-            Remove
-          </button>
+          {!isDefault && (
+            <button
+              onclick={() => this.removeToken(category, tokenName)}
+              class={`px-2 py-1 text-xs rounded transition-colors duration-200 ${
+                isDarkMode
+                  ? 'text-red-400 hover:bg-red-400/10'
+                  : 'text-red-600 hover:bg-red-50'
+              }`}
+            >
+              Remove
+            </button>
+          )}
         </div>
 
         <div class="space-y-3">
@@ -197,8 +254,8 @@ export class TokensManager extends Nullstack {
             </label>
             <input
               type="text"
-              value={token?.value || ''}
-              onchange={(e) =>
+              value={formattedValue}
+              onchange={(e: any) =>
                 this.updateToken(category, tokenName, e.target.value)
               }
               class={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 transition-all duration-200 outline-none font-mono ${
@@ -220,7 +277,7 @@ export class TokensManager extends Nullstack {
             <input
               type="text"
               value={token?.description || ''}
-              onchange={(e) =>
+              onchange={(e: any) =>
                 this.updateTokenDescription(category, tokenName, e.target.value)
               }
               placeholder="Optional description..."
@@ -237,16 +294,21 @@ export class TokensManager extends Nullstack {
   }
 
   render({ isDarkMode }: { isDarkMode: boolean }): NullstackNode {
-    const currentTokens =
-      this.tokens[this.selectedTokenType as keyof DesignTokens];
+    // Inicializa tokens na primeira renderização
+    if (Object.keys(this.tokens).length === 0) {
+      this.initializeTokens();
+    }
+
+    const currentTokens = this.tokens[this.selectedTokenType] || {};
+    const tokenTypes = Object.keys(this.tokens);
 
     return (
       <div class="space-y-6">
         {/* Token Type Selector */}
-        <div class="flex space-x-2">
-          {Object.keys(this.tokens).map((tokenType) => (
+        <div class="flex space-x-2 overflow-x-auto pb-2">
+          {tokenTypes.map((tokenType) => (
             <button
-              class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                 this.selectedTokenType === tokenType
                   ? isDarkMode
                     ? 'bg-white text-gray-900'
@@ -257,27 +319,48 @@ export class TokensManager extends Nullstack {
               }`}
               onclick={() => (this.selectedTokenType = tokenType)}
             >
-              {tokenType.charAt(0).toUpperCase() + tokenType.slice(1)}
+              {tokenType.charAt(0).toUpperCase() + tokenType.slice(1)} (
+              {Object.keys(currentTokens).length})
             </button>
           ))}
         </div>
 
         {/* Actions */}
         <div class="flex justify-between items-center">
-          <h3
-            class={`text-lg font-semibold ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}
-          >
-            {this.selectedTokenType.charAt(0).toUpperCase() +
-              this.selectedTokenType.slice(1)}{' '}
-            Tokens
-          </h3>
+          <div>
+            <h3
+              class={`text-lg font-semibold ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              {this.selectedTokenType.charAt(0).toUpperCase() +
+                this.selectedTokenType.slice(1)}{' '}
+              Tokens
+            </h3>
+            <p
+              class={`text-sm mt-1 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-600'
+              }`}
+            >
+              {
+                Object.keys(currentTokens).filter((name) =>
+                  this.isDefaultToken(this.selectedTokenType, name)
+                ).length
+              }{' '}
+              default tokens,{' '}
+              {
+                Object.keys(currentTokens).filter(
+                  (name) => !this.isDefaultToken(this.selectedTokenType, name)
+                ).length
+              }{' '}
+              custom tokens
+            </p>
+          </div>
           <div class="flex space-x-3">
             <button
               onclick={() =>
                 this.addToken(
-                  this.selectedTokenType as keyof DesignTokens,
+                  this.selectedTokenType,
                   `new-${this.selectedTokenType}-token`
                 )
               }
@@ -304,16 +387,17 @@ export class TokensManager extends Nullstack {
 
         {/* Tokens Grid */}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {Object.entries(currentTokens).map(([tokenName, token]) =>
-            token
+          {Object.keys(currentTokens).map((tokenName) => {
+            const token = currentTokens[tokenName];
+            return token
               ? this.renderTokenInput(
-                  this.selectedTokenType as keyof DesignTokens,
+                  this.selectedTokenType,
                   tokenName,
                   token,
                   isDarkMode
                 )
-              : null
-          )}
+              : null;
+          })}
         </div>
 
         {/* Empty State */}

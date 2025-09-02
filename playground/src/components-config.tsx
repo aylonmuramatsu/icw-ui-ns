@@ -1,15 +1,17 @@
 import { Button } from '@icw/ui';
+import { NullstackNode } from 'nullstack';
 
 export interface ComponentVariant {
   name: string;
   props: Record<string, any>;
 }
 
+// A tipagem correta para o campo "component" deve aceitar tanto um componente Nullstack (classe ou função) quanto uma string (para elementos nativos).
 export interface ComponentConfig {
   name: string;
   description: string;
   icon: string;
-  component: any;
+  component: ((props: any) => NullstackNode) | string;
   variants: Record<string, ComponentVariant>;
 }
 
@@ -19,7 +21,7 @@ export const componentsConfig: Record<string, ComponentConfig> = {
     name: 'Button',
     description: 'Botões com diferentes variações',
     icon: '🎯',
-    component: Button,
+    component: (props) => <Button {...props}>Teste</Button>,
     variants: {
       default: {
         name: 'Default',
@@ -27,16 +29,16 @@ export const componentsConfig: Record<string, ComponentConfig> = {
       },
       primary: {
         name: 'Primary',
-        props: { 
+        props: {
           children: 'Botão Primary',
-          variant: 'primary'
+          variant: 'primary',
         },
       },
       secondary: {
         name: 'Secondary',
-        props: { 
+        props: {
           children: 'Botão Secondary',
-          variant: 'secondary'
+          variant: 'secondary',
         },
       },
     },
@@ -49,16 +51,16 @@ export const componentsConfig: Record<string, ComponentConfig> = {
     variants: {
       default: {
         name: 'Default',
-        props: { 
+        props: {
           type: 'text',
-          placeholder: 'Digite algo...'
+          placeholder: 'Digite algo...',
         },
       },
       email: {
         name: 'Email',
-        props: { 
+        props: {
           type: 'email',
-          placeholder: 'seu@email.com'
+          placeholder: 'seu@email.com',
         },
       },
     },

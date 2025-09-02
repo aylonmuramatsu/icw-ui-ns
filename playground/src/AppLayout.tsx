@@ -5,7 +5,6 @@ import Nullstack, {
 } from 'nullstack';
 import { ComponentConfig, componentsConfig } from './components-config';
 import { TokensManager } from './components/TokensManager';
-import { generateComponentCode } from './utils/code-generator';
 
 export class AppLayout extends Nullstack {
   selectedComponent = 'button';
@@ -110,6 +109,7 @@ export class AppLayout extends Nullstack {
           <div class="space-y-1">
             {Object.keys(componentsConfig).map((key) => {
               const component = componentsConfig[key];
+              const children = componentsConfig[key]?.children || null;
               return (
                 <button
                   class={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all duration-200 ${
@@ -206,27 +206,6 @@ export class AppLayout extends Nullstack {
   renderTokensScreen() {
     return (
       <div class="space-y-6">
-        <div class="mb-8">
-          <div class="flex items-center space-x-4 mb-2">
-            <span class="text-2xl">🎨</span>
-            <div>
-              <h1
-                class={`text-3xl font-bold transition-colors duration-200 ${
-                  this.isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}
-              >
-                Design Tokens
-              </h1>
-              <p
-                class={`transition-colors duration-200 ${
-                  this.isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                } mt-1`}
-              >
-                Configure colors, typography, spacing and shadows
-              </p>
-            </div>
-          </div>
-        </div>
         <TokensManager isDarkMode={this.isDarkMode} />
       </div>
     );
@@ -258,106 +237,95 @@ export class AppLayout extends Nullstack {
     );
   }
 
-  renderVariantsSection(component: ComponentConfig) {
-    const currentVariant = component.variants[this.selectedVariant];
-    const ComponentClass = component.component;
-    const generatedCode = generateComponentCode(component, currentVariant);
+  // renderVariantsSection(component: ComponentConfig) {
+  //   const currentVariant = component.variants[this.selectedVariant];
+  //   const ComponentClass = component.component;
+  //   const generatedCode = generateComponentCode(component, currentVariant);
 
-    // Se não há variante selecionada, não renderiza nada
-    if (!currentVariant) {
-      return (
-        <div class="text-center py-12">
-          <p
-            class={`text-gray-500 ${this.isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
-          >
-            No variant selected
-          </p>
-        </div>
-      );
-    }
+  //   // Se não há variante selecionada, não renderiza nada
+  //   if (!currentVariant) {
+  //     return (
+  //       <div class="text-center py-12">
+  //         <p
+  //           class={`text-gray-500 ${this.isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}
+  //         >
+  //           No variant selected
+  //         </p>
+  //       </div>
+  //     );
+  //   }
 
-    return (
-      <div class="space-y-6">
-        {/* Variant Selector */}
-        <div class="flex space-x-2">
-          {Object.keys(component.variants).map((key) => {
-            const variant = component.variants[key];
-            return (
-              <button
-                class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  this.selectedVariant === key
-                    ? this.isDarkMode
-                      ? 'bg-white text-gray-900'
-                      : 'bg-gray-900 text-white'
-                    : this.isDarkMode
-                      ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
-                      : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
-                }`}
-                onclick={() => (this.selectedVariant = key)}
-              >
-                {variant.name}
-              </button>
-            );
-          })}
-        </div>
+  //   return (
+  //     <div class="space-y-6">
+  //       {/* Variant Selector */}
+  //       <div class="flex space-x-2">
+  //         {Object.keys(component.variants).map((key) => {
+  //           const variant = component.variants[key];
+  //           return (
+  //             <button
+  //               class={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+  //                 this.selectedVariant === key
+  //                   ? this.isDarkMode
+  //                     ? 'bg-white text-gray-900'
+  //                     : 'bg-gray-900 text-white'
+  //                   : this.isDarkMode
+  //                     ? 'bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700'
+  //                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+  //               }`}
+  //               onclick={() => (this.selectedVariant = key)}
+  //             >
+  //               {variant.name}
+  //             </button>
+  //           );
+  //         })}
+  //       </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Preview */}
-          <div
-            class={`rounded-xl border p-8 transition-colors duration-200 ${
-              this.isDarkMode
-                ? 'bg-gray-800 border-gray-700'
-                : 'bg-white border-gray-200'
-            }`}
-          >
-            <h3
-              class={`text-sm font-semibold mb-4 uppercase tracking-wide transition-colors duration-200 ${
-                this.isDarkMode ? 'text-gray-300' : 'text-gray-900'
-              }`}
-            >
-              Preview
-            </h3>
-            <div
-              class={`flex items-center justify-center min-h-[120px] rounded-lg transition-colors duration-200 ${
-                this.isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
-              }`}
-            >
-              {ComponentClass === 'input' ? (
-                <input
-                  {...currentVariant.props}
-                  class={`px-4 py-2 border rounded-lg focus:ring-2 transition-all duration-200 outline-none ${
-                    this.isDarkMode
-                      ? 'border-gray-600 bg-gray-800 text-white focus:border-white focus:ring-gray-700'
-                      : 'border-gray-300 focus:border-gray-900 focus:ring-gray-100'
-                  }`}
-                />
-              ) : (
-                <ComponentClass {...currentVariant.props} />
-              )}
-            </div>
-          </div>
+  //       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+  //         {/* Preview */}
+  //         <div
+  //           class={`rounded-xl border p-8 transition-colors duration-200 ${
+  //             this.isDarkMode
+  //               ? 'bg-gray-800 border-gray-700'
+  //               : 'bg-white border-gray-200'
+  //           }`}
+  //         >
+  //           <h3
+  //             class={`text-sm font-semibold mb-4 uppercase tracking-wide transition-colors duration-200 ${
+  //               this.isDarkMode ? 'text-gray-300' : 'text-gray-900'
+  //             }`}
+  //           >
+  //             Preview
+  //           </h3>
+  //           <div
+  //             class={`flex items-center justify-center min-h-[120px] rounded-lg transition-colors duration-200 ${
+  //               this.isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+  //             }`}
+  //           >
+  //             <ComponentClass {...currentVariant.props} />
+  //           </div>
+  //         </div>
 
-          {/* Code */}
-          <div class="bg-gray-900 rounded-xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wide">
-                Code
-              </h3>
-              <button
-                class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium rounded-lg transition-all duration-200"
-                onclick={() => navigator.clipboard.writeText(generatedCode)}
-              >
-                Copy
-              </button>
-            </div>
-            <pre class="text-sm text-gray-300 overflow-x-auto">
-              <code>{generatedCode}</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  //         {/* Code */}
+  //         <div class="bg-gray-900 rounded-xl p-6">
+  //           <div class="flex items-center justify-between mb-4">
+  //             <h3 class="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+  //               Code
+  //             </h3>
+  //             <button
+  //               class="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-medium rounded-lg transition-all duration-200"
+  //               onclick={() => navigator.clipboard.writeText(generatedCode)}
+  //             >
+  //               Copy
+  //             </button>
+  //           </div>
+  //           <pre class="text-sm text-gray-300 overflow-x-auto">
+  //             <code>{generatedCode}</code>
+  //           </pre>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   renderExamplesSection(component: ComponentConfig) {
     const ComponentClass = component.component;
@@ -466,9 +434,44 @@ export class AppLayout extends Nullstack {
                   />
                 </div>
               </div>
-              <div class="flex space-x-3 pt-2">
-                <Button variant="primary">Save</Button>
-                <Button variant="secondary">Cancel</Button>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <Button
+                  variant="thiaguito"
+                  customVariants={{
+                    base: 'rounded-none',
+                    variant: {
+                      thiaguito:
+                        'bg-red-300 text-red-600 rounded-full border-blue-500 border-2',
+                    },
+                  }}
+                >
+                  Default 2
+                </Button>
+                <Button variant="solid" color="secondary">
+                  Save
+                </Button>
+                <Button variant="solid" color="warning">
+                  Danger
+                </Button>
+
+                <Button variant="solid" color="primary">
+                  Cancel
+                </Button>
+                <Button variant="outline" color="danger">
+                  Delete
+                </Button>
+                <Button variant="ghost" color="danger">
+                  Confirm
+                </Button>
+                <Button variant="solid" color="info">
+                  Info
+                </Button>
+                <Button variant="solid" color="warning">
+                  Warning
+                </Button>
+                <Button variant="solid" color="success">
+                  Warning
+                </Button>
               </div>
             </div>
           </div>
@@ -497,7 +500,7 @@ export class AppLayout extends Nullstack {
               : currentComponent && (
                   <div>
                     {this.renderComponentHeaderSection(currentComponent)}
-                    {this.renderVariantsSection(currentComponent)}
+                    {/* {this.renderVariantsSection(currentComponent)} */}
                     {this.renderExamplesSection(currentComponent)}
                   </div>
                 )}

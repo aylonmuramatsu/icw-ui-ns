@@ -1,20 +1,17 @@
-import Nullstack, { NullstackClientContext, NullstackNode } from 'nullstack';
-
+import Nullstack, { NullstackNode } from 'nullstack';
 import '../tailwind.css';
 import { AppLayout } from './AppLayout';
+
 declare function Head(): NullstackNode;
 
 class Application extends Nullstack {
-  prepare({ page }: NullstackClientContext) {
-    page.locale = 'en-US';
-  }
-
   renderHead() {
     return (
       <head>
+        <title>Teste Manual de Temas</title>
         <link href="https://fonts.gstatic.com" rel="preconnect" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Roboto&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -23,7 +20,7 @@ class Application extends Nullstack {
 
   render() {
     return (
-      <body>
+      <body class="min-h-screen bg-base-100 text-base-content p-8">
         <Head />
         <AppLayout />
       </body>
