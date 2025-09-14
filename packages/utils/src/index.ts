@@ -1,7 +1,4 @@
-
-//@ts-ignore
-export * from './icw-theme-plugin';
-//@ts-ignore
-export * as theme from './themes';
+// export * from './components';
+// export * from './default-theme.css';
 export * from './tv';
 

@@ -2,6 +2,15 @@
   "name": "@icw/utils",
   "version": "0.0.1",
   "main": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./src/theme.css"
+  },
+  "files": [
+    "src/**/*.ts",
+    "src/**/*.css"
+  ],
   "scripts": {
     "test": "vitest"
   },

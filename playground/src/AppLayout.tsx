@@ -8,14 +8,16 @@ export class AppLayout extends Nullstack {
     context.selected_component = 'button';
   }
 
-  render(context: any): NullstackNode {
+  render(_context: any): NullstackNode {
     return (
-      <div class={`min-h-screen transition-colors duration-200`}>
-        <Header />
+      <div
+        class={`min-h-screen transition-colors duration-300 from-gray-900 via-gray-950 to-gray-900 b`}
+      >
+        <div class="relative z-10">
+          <Header />
 
-        <div class="flex">
-          <Sidebar />
-          <div class="min-h bg-background p-4 w-full">
+          <div class="flex">
+            <Sidebar />
             <MainContent />
           </div>
         </div>

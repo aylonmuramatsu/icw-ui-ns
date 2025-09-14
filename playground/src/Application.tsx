@@ -20,7 +20,7 @@ class Application extends Nullstack {
 
   render() {
     return (
-      <body class="min-h-screen bg-backgroud text-base-content">
+      <body class="min-h-screen">
         <Head />
         <AppLayout />
       </body>

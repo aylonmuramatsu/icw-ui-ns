@@ -18,13 +18,15 @@ export interface ComponentConfig {
 // Configuração dos componentes do playground
 export const componentsConfig: Record<string, ComponentConfig> = {
   button: {
-    name: 'Button2',
-    description: 'Botões com diferentes variações',
+    name: 'Button',
+    description: 'Botões com diferentes variações, cores, tamanhos e estados',
     icon: '🎯',
     component: (props) => <Button {...props}>Button</Button>,
     configs: {
       variant: ['solid', 'outline', 'ghost'],
       color: ['primary', 'secondary', 'danger', 'success', 'info', 'warning'],
+      size: ['xs', 'sm', 'md', 'lg'],
+      disabled: ['false', 'true'],
     },
   },
   // input: {
