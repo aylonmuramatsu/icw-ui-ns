@@ -1,5 +1,6 @@
 import Nullstack from 'nullstack';
 import { componentsConfig } from '../components-config';
+import { LucideIconsPage } from '../pages/lucide-icons';
 import { ComponentCanvas } from './ComponentCanvas';
 import { ComponentHeader } from './ComponentHeader';
 import { ComponentVariants } from './ComponentVariants';
@@ -20,24 +21,34 @@ export class MainContent extends Nullstack {
               {/* Content Container - escuro, destacando do header */}
               <div class="bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 border border-border/40 rounded-2xl shadow-2xl shadow-primary/10 p-6 lg:p-8 h-full transition-colors duration-300">
                 <div class="space-y-6 h-full flex flex-col">
-                  {/* Header Section */}
-                  <div class="flex-shrink-0">
-                    <ComponentHeader />
-                  </div>
+                  {!['lucide-icons'].includes(selected_component) ? (
+                    <>
+                      {/* Header Section */}
+                      <div class="flex-shrink-0">
+                        <ComponentHeader />
+                      </div>
 
-                  {/* Variants Section */}
-                  <div class="flex-shrink-0">
-                    <div class="bg-gray-800/80 rounded-lg p-4 border border-border/30 shadow-inner shadow-primary/5">
-                      <ComponentVariants />
-                    </div>
-                  </div>
+                      {/* Variants Section */}
+                      <div class="flex-shrink-0">
+                        <div class="bg-gray-800/80 rounded-lg p-4 border border-border/30 shadow-inner shadow-primary/5">
+                          <ComponentVariants />
+                        </div>
+                      </div>
 
-                  {/* Canvas Section - Main Content Area */}
-                  <div class="flex-1 min-h-0">
-                    {/* <div class="bg-gray-900/80 rounded-lg border border-border/50 h-full shadow-lg shadow-primary/5"> */}
-                    <ComponentCanvas />
-                    {/* </div> */}
-                  </div>
+                      {/* Canvas Section - Main Content Area */}
+                      <div class="flex-1 min-h-0">
+                        {/* <div class="bg-gray-900/80 rounded-lg border border-border/50 h-full shadow-lg shadow-primary/5"> */}
+                        <ComponentCanvas />
+                        {/* </div> */}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {selected_component === 'lucide-icons' && (
+                        <LucideIconsPage />
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             </div>

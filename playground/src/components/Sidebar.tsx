@@ -77,6 +77,40 @@ export class Sidebar extends Nullstack {
             </div>
           </div>
 
+          <div class="relative z-10 p-3 h-full flex flex-col">
+            {/* Header Section */}
+            <div class="mb-4">
+              <div class="space-y-1">
+                <button
+                  class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${
+                    context.selected_component === 'lucide-icons'
+                      ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
+                      : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
+                  }`}
+                  onclick={{ selected_component: 'lucide-icons' }}
+                  source={context}
+                  style="min-height: 36px;"
+                >
+                  {/* Subtle shine effect */}
+                  <div
+                    class={`absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ${context.selected_component === 'lucide-icons' ? 'opacity-10' : 'opacity-0 group-hover:opacity-5'}`}
+                  ></div>
+
+                  <span
+                    class={`font-semibold text-xs truncate transition-all duration-300 ${
+                      context.selected_component === 'lucide-icons'
+                        ? 'text-primary'
+                        : 'text-white group-hover:text-primary'
+                    }`}
+                    style="max-width: 120px;"
+                  >
+                    Lucide Icons
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           {/* Footer gradient */}
           <div class="mt-auto pt-2">
             <div class="h-px bg-gradient-to-r from-transparent via-border/50 to-transparent" />
