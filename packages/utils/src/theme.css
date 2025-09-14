@@ -1,6 +1,8 @@
 
 @import './components/button.css';
 @import './components/button-group.css';
+@import './components/input.css';
+@import './components//alert.css';
 @theme {
   /* Core Colors */
   --color-primary: #1eb7e1;
@@ -21,6 +23,8 @@
   --color-text-secondary: #64748b;
   --color-text-muted: #94a3b8;
   --color-foreground: var(--color-text-primary);
+
+
   
   /* Spacing */
   --spacing-xs: 0.25rem;

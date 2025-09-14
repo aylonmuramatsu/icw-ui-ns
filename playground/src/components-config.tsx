@@ -1,4 +1,5 @@
-import { Button, ButtonGroup } from '@icw/ui';
+import { Alert, Button, ButtonGroup, Input, LucideIcons } from '@icw/ui';
+
 import { NullstackNode } from 'nullstack';
 
 export interface ComponentVariant {
@@ -42,6 +43,32 @@ export const componentsConfig: Record<string, ComponentConfig> = {
     configs: {
       size: ['xs', 'sm', 'md', 'lg'],
       disabled: ['false', 'true'],
+    },
+  },
+  input: {
+    name: 'Input',
+    description: 'Input de texto',
+    icon: '🎯',
+    component: (props) => (
+      <Input
+        {...props}
+        icon-left={<LucideIcons.User class="text-red-500 size-4" />}
+        icon-right={<LucideIcons.ArrowRight class="text-red-500 size-4" />}
+      />
+    ),
+    configs: {
+      size: ['xs', 'sm', 'md', 'lg'],
+      disabled: ['false', 'true'],
+    },
+  },
+  alert: {
+    name: 'Alert',
+    description: 'Mensagem de alerta',
+    icon: '🎯',
+    component: (props) => <Alert {...props} message="Falha para identificar" />,
+    configs: {
+      size: ['xs', 'sm', 'md', 'lg'],
+      color: ['primary', 'secondary', 'danger', 'success', 'info', 'warning'],
     },
   },
   // input: {

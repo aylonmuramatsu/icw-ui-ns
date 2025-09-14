@@ -1,0 +1,61 @@
+@layer components {
+  /* Wrapper */
+  .input-wrapper {
+    @apply relative;
+  }
+
+  /* Base input */
+  .input {
+    @apply w-full pl-4 pr-4 py-2.5 border border-border rounded-xl shadow-sm transition-all text-sm text-foreground bg-white;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary;
+  }
+
+  /* Sizes */
+  .input-xs { @apply text-xs py-1.5; }
+  .input-sm { @apply text-sm py-2; }
+  .input-md { @apply text-base py-2.5; }
+  .input-lg { @apply text-lg py-3; }
+
+  /* States */
+  .input-error {
+    @apply border-error focus-visible:ring-error focus-visible:border-error;
+  }
+
+  .input-disabled {
+    @apply bg-muted text-text-secondary cursor-not-allowed border-border;
+  }
+
+  .input-readonly {
+    @apply bg-surface text-text-secondary border-border;
+  }
+
+  /* Icon paddings */
+  .input-icon-left { @apply pl-10; }
+  .input-icon-right { @apply pr-10; }
+
+  /* Addon (icons containers) */
+  .input-addon {
+    @apply absolute inset-y-0 flex items-center pointer-events-none;
+  }
+  .input-addon-left { @apply left-0 pl-3; }
+  .input-addon-right { @apply right-0 pr-3; }
+
+  /* Message error bubble */
+  .input-message {
+    @apply mt-1 text-sm;
+    @apply absolute top-full left-4 w-full translate-y-2 min-w-[180px] max-w-xs flex items-center gap-2;
+    @apply text-lg font-medium rounded-2xl text-white px-4 py-2;
+    @apply bg-gradient-to-br from-blue-600 to-purple-700 border border-red-200 shadow-lg;
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .input-message-hidden {
+    @apply opacity-0 -z-[1] scale-95;
+  }
+
+  .input-message-visible {
+    @apply z-20 opacity-100 scale-105;
+  }
+}
+
+
