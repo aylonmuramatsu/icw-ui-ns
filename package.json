@@ -1,7 +1,7 @@
 {
-  "name": "icw-ui-ns",
-  "version": "0.0.1",
-  "description": "monorepo example",
+  "name": "@icw",
+  "version": "1.0.0",
+  "description": "ICW UI for DX",
   "keywords": [],
   "scripts": {
     "start": "pnpm run --filter playground start",
@@ -12,5 +12,19 @@
   "packageManager": "pnpm@10.15.0",
   "devDependencies": {
     "prettier": "^3.6.2"
+  },
+  "exports": {
+    "ui": "./packages/ui/src/index.ts",
+    "utils": "./packages/utils/src/index.ts"
+  },
+  "peerDependencies": {
+    "@icw/utils": "^0.0.1",
+    "@icw/ui": "^0.0.1",
+    "nullstack": "~0.20.0",
+    "tailwindcss": "^3.0.0",
+    "tailwind-variants": "^3.1.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "tailwind-merge": "^3.3.1"
+    
   }
 }
