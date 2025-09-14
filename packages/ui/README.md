@@ -9,13 +9,13 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 
 ## 🟦 Foundation
 
-- [x] **Custom Theme**  
-  É possível editar o tema através do plugin icw
+- [x] **Custom Theme**
+      Fornecemos uma base no @icw/utils/theme.css, sempre devemos importar para usar! porém podemos criar um css das variantes das cores para customizar conforme a sua necessidade
 
 - [ ] **Portal**  
   Renderização fora da árvore principal (dropdowns, modais, tooltips).
 
-- [ ] **tv.ts**  
+- [x] **tv.ts**  
   Utilitário para tailwind-variants.
 
 ---
@@ -23,32 +23,30 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 ## 🟨 Tipografia
 
 - [ ] **Heading** (`.heading-1`, `.heading-2`, etc)
-- [ ] **Text** (`.text-primary`, `.text-secondary`, etc)
 
 ---
 
 ## 🟧 Formulários
 
-- [ ] **Form**
-  - [ ] Form.Group
-  - [ ] Form.Label
-  - [ ] Form.Error
-- [ ] **Input** (text, email, password, number)
-- [ ] **Textarea**
-- [ ] **Select** (custom, digitável, com portal)
-- [ ] **Checkbox**
+- [x] **Form**
+  - [x] Form.Group
+  - [x] Form.Label
+- [x] **Input** (text, email, password, number)
+- [x] **Textarea**
+- [x] **Select** (custom, digitável, com portal)
+- [x] **Checkbox**
 - [ ] **Radio**
-- [ ] **Switch**
+- [x] **Switch**
 - [ ] **Slider**
 - [ ] **FileInput**
 - [ ] **Combobox** (Input + Dropdown)
 - [ ] **DatePicker**
 - [ ] **TimePicker**
 - [ ] **RangePicker**
-- [ ] **InputMask**
+- [x] **InputMask**
 - [ ] **OTPInput**
-- [ ] **DurationInput**
-- [ ] **CurrencyInput**
+- [x] **DurationInput**
+- [x] **CurrencyInput**
 
 ---
 
@@ -57,15 +55,15 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 - [x] **Button**
   - [x] Outline
   - [x] Solid
-  - [ ] Ghost
+  - [x] Ghost
 - [ ] **IconButton**
-- [ ] **ButtonGroup**
+- [x] **ButtonGroup**
 
 ---
 
 ## 🟪 Feedback
 
-- [ ] **Alert**
+- [x] **Alert**
 - [ ] **Badge**
 - [ ] **Chip**
 - [ ] **Progress**
@@ -109,19 +107,19 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 - [ ] **Tag**
 - [ ] **EmptyState**
 - [ ] **Divider**
+- [ ] **Calendar**
 
 ---
 
 ## 🟩 Ícones
 
-- [ ] **Icon Lucide** (sistema de ícones customizável)
+- [x] **Icon Lucide** (sistema de ícones customizável)
 
 ---
 
 ## 🧩 Observações
 
 - Sempre compor componentes complexos a partir dos básicos (ex: Combobox = Input + Button + Dropdown).
-- Seguir tokens e temas definidos em `theme.ts`.
 - Não usar libs externas de UI.
 
 ---
