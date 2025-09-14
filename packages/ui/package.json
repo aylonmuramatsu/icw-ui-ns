@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@icw/utils": "workspace:*",
+    "remask": "^1.2.2",
     "tailwind-variants": "^3.1.0"
   }
 }

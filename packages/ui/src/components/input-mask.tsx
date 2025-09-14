@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { tv } from '@icw/utils';
 import Nullstack from 'nullstack';
+import { mask, unmask } from 'remask';
 
 const ui = tv({
   slots: {
@@ -25,7 +25,7 @@ const ui = tv({
     },
     error: {
       true: {
-        input: 'input-error caption',
+        input: 'input-error',
       },
     },
     disabled: {
@@ -62,21 +62,53 @@ const ui = tv({
   },
 }) as any;
 
-export class InputBase extends Nullstack {
+export class InputMask extends Nullstack {
+  parse({
+    event,
+    onchange,
+    bind,
+    name,
+    mask: mask_value,
+    oninput,
+    unmasked,
+    ...context
+  }) {
+    const original_value = event.target.value || '';
+    const unmasked_value = unmask(mask(original_value, mask_value));
+    const masked_value = this.applyMask({
+      value: original_value,
+      mask: mask_value,
+    });
+
+    //   // ...context,
+    event.target.value = masked_value;
+    if (bind) bind.object[bind.property] = unmasked_value;
+    oninput({
+      ...context,
+      value: unmasked_value,
+      masked: masked_value,
+      unmasked,
+      event,
+    });
+  }
+
+  applyMask({ value, mask: mask_value }) {
+    const formatted = mask(value || '', mask_value);
+    return formatted;
+  }
   render({
-    id,
+    name,
     type,
-    errors,
+    error,
     styles,
-    size = 'md',
     disabled,
     readonly,
+    oninput,
     onclick,
     ...props
   }: any) {
     const { wrapper, input, addon } = ui();
     const isDisabled = disabled || readonly;
-
     return (
       <>
         <div class={wrapper({ className: styles?.wrapper })}>
@@ -89,23 +121,24 @@ export class InputBase extends Nullstack {
             </div>
           )}
           <input
-            id={id}
-            type={type}
-            name={id}
+            id={name}
+            name={name}
+            //@ts-ignore
+            value={this.applyMask()}
             autocomplete="off"
             disabled={isDisabled}
             readonly={readonly}
             class={input({
               className: styles?.input,
-              size,
-              error: !!errors?.[id],
+              error: !!error?.[name],
               disabled: isDisabled,
               readonly: readonly,
               'icon-left': !!props['icon-left'],
               'icon-right': !!props['icon-right'],
             })}
+            default
             onclick={onclick}
-            {...props}
+            oninput={this.parse}
           />
         </div>
       </>

@@ -2,10 +2,21 @@ import Nullstack, { NullstackNode } from 'nullstack';
 import { componentsConfig } from '../components-config';
 
 export class Sidebar extends Nullstack {
+  change_component(context) {
+    context.selected_component = context.key;
+    const base_component = componentsConfig[context.key];
+    context.configs = Object.entries(base_component.configs).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value?.length > 0 ? value[0] : null;
+        return acc;
+      },
+      {}
+    );
+  }
   render(context: any): NullstackNode {
     return (
       <aside
-        class={`w-64 border-r border-border/20 min-h-screen transition-colors duration-200 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden overflow-y-auto text-white`}
+        class={`w-64 border-r fixed border-border/20 min-h-screen transition-colors duration-200 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 overflow-hidden overflow-y-auto text-white`}
       >
         {/* Subtle animated background */}
         <div class="absolute inset-0 opacity-30 pointer-events-none">
@@ -35,8 +46,8 @@ export class Sidebar extends Nullstack {
                         ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
                         : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
                     }`}
-                    onclick={{ selected_component: key }}
-                    source={context}
+                    key={key}
+                    onclick={this.change_component}
                     style="min-height: 36px;"
                   >
                     {/* Subtle shine effect */}

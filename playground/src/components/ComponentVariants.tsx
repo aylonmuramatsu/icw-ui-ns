@@ -4,20 +4,6 @@ import { componentsConfig } from '../components-config';
 export class ComponentVariants extends Nullstack {
   showControls = true;
   showProps = false;
-  selected_variant = 'solid';
-  prepare(context: any) {
-    const { selected_component } = context;
-    const base_component = componentsConfig[selected_component];
-    // console.log(base_component);
-    context.configs = Object.entries(base_component.configs).reduce(
-      (acc, [key, value]) => {
-        acc[key] = value?.length > 0 ? value[0] : null;
-        // prev[key] = 'teste';
-        return acc;
-      },
-      {}
-    );
-  }
 
   toggleControls() {
     this.showControls = !this.showControls;
@@ -30,9 +16,11 @@ export class ComponentVariants extends Nullstack {
   changeConfig({ event, key, configs }) {
     configs[key] = event.target.value;
   }
+
   render({ selected_component, configs }: any) {
     const component = componentsConfig[selected_component];
-    // console.log(context.configs);
+    if (!component) return null;
+
     return (
       <div class="mb-6">
         {/* Premium Controls Panel */}
@@ -85,16 +73,15 @@ export class ComponentVariants extends Nullstack {
                   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {Object.entries(component.configs).map(([key, value]) => (
                       <div class="group space-y-3">
-                        <label class="text-xs font-semibold capitalize text-foreground">
+                        <label class="text-xs font-semibold capitalize text-white">
                           {key}
                         </label>
                         <div class="relative">
                           <select
                             class="w-full px-3 py-2 rounded-lg border border-border/40 text-white bg-gradient-to-b bg-transparent text-sm transition-colors duration-200 focus:border-primary focus:ring-1 focus:ring-primary/30 outline-none appearance-none cursor-pointer"
-                            value={configs[key]}
-                            onchange={({ event }) =>
-                              this.changeConfig({ event, key, configs })
-                            }
+                            value={configs?.[key]}
+                            key={key}
+                            onchange={this.changeConfig}
                           >
                             {value.map((option) => (
                               <option

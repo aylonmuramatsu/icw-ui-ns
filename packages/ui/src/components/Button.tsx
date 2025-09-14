@@ -59,7 +59,6 @@ export class Button extends Nullstack {
       children,
       ...props
     } = context;
-    console.log('size', size);
     return (
       <button
         class={buttonVariants({ variant, color, size, class: className })}

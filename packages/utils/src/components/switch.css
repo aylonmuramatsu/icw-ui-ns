@@ -1,0 +1,54 @@
+@layer components {
+  /* Wrapper */
+  .switch-wrapper {
+    @apply inline-flex items-center;
+  }
+
+  /* Track */
+  .switch {
+    @apply relative inline-flex shrink-0 cursor-pointer rounded-full border border-border bg-gray-200 transition-all duration-200 ease-in-out;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Sizes (track) */
+  .switch-sm { @apply h-5 w-9; }
+  .switch-md { @apply h-6 w-11; }
+  .switch-lg { @apply h-7 w-14; }
+
+  /* Thumb */
+  .switch-thumb {
+    @apply pointer-events-none absolute top-[1px] left-0.5 rounded-full bg-white shadow transition-transform duration-200 ease-in-out;
+  }
+
+  /* Thumb sizes (by track size) */
+  .switch-sm .switch-thumb { @apply h-4 w-4; }
+  .switch-md .switch-thumb { @apply h-5 w-5; }
+  .switch-lg .switch-thumb { @apply h-6 w-6; }
+
+  /* Checked state (color variants) */
+  .switch-checked { @apply bg-primary; }
+  .switch-checked.switch-primary { @apply bg-primary border-primary; }
+  .switch-checked.switch-secondary { @apply bg-secondary border-secondary; }
+  .switch-checked.switch-danger { @apply bg-error border-error; }
+  .switch-checked.switch-success { @apply bg-success border-success; }
+  .switch-checked.switch-info { @apply bg-info border-info; }
+  .switch-checked.switch-warning { @apply bg-warning border-warning; }
+
+  /* Thumb translate (checked) */
+  .switch-sm.switch-checked .switch-thumb { @apply translate-x-4; }
+  .switch-md.switch-checked .switch-thumb { @apply translate-x-5; }
+  .switch-lg.switch-checked .switch-thumb { @apply translate-x-7; }
+
+  /* Disabled state */
+  .switch-disabled { @apply bg-muted cursor-not-allowed opacity-60; }
+
+  .switch-input {
+    @apply sr-only;
+  }
+
+  /* Label */
+  .switch-label { @apply ml-3 text-sm font-medium text-foreground; }
+  .switch-label-disabled { @apply text-secondary; }
+}
+
+

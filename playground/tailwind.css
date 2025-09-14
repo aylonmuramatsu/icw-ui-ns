@@ -1,4 +1,5 @@
 @import "tailwindcss";
 @import "@icw/utils/theme.css";
-
+@plugin "@tailwindcss/forms";
+/* @config "./tailwind.config.json" */
 

@@ -16,7 +16,7 @@ export class ComponentCanvas extends Nullstack {
     const name = Component.call().type.name;
     // Monta as props a partir das configs
     //@ts-ignore
-    const propsString = Object.entries(configs)
+    const propsString = Object.entries(configs || {})
       .map(([key, value]) => `${key}="${value}"`)
       .join(' ');
 
@@ -29,7 +29,7 @@ export class ComponentCanvas extends Nullstack {
   render({ selected_component, configs }: any) {
     const component = componentsConfig[selected_component];
     const Component: any = component.component;
-
+    // return null;
     return (
       <div class="mt-8 ">
         {/* Ultra-Premium Canvas */}
@@ -82,7 +82,7 @@ export class ComponentCanvas extends Nullstack {
               background-position: 0 0, 11px 11px;
             `}
           >
-            <Component {...configs} disabled={configs.disabled === 'true'} />
+            <Component {...configs} disabled={configs?.disabled === 'true'} />
 
             {/* Component showcase area */}
           </div>

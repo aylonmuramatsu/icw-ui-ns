@@ -1,44 +1,44 @@
 @layer components {
   /* Wrapper */
-  .input-wrapper {
+  .textarea-wrapper {
     @apply relative;
   }
 
-  /* Base input */
-  .input {
+  /* Base textarea */
+  .textarea {
     @apply w-full pl-4 pr-4 py-2.5 border border-border rounded-xl shadow-sm transition-all text-sm text-foreground bg-white;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary;
   }
 
   /* Sizes */
-  .input-xs { @apply text-xs py-1.5; }
-  .input-sm { @apply text-sm py-2; }
-  .input-md { @apply text-base py-2.5; }
-  .input-lg { @apply text-lg py-3; }
+  .textarea-xs { @apply text-xs py-1.5; }
+  .textarea-sm { @apply text-sm py-2; }
+  .textarea-md { @apply text-base py-2.5; }
+  .textarea-lg { @apply text-lg py-3; }
 
   /* States */
-  .input-error {
+  .textarea-error {
     @apply border-error focus-visible:ring-error focus-visible:border-error;
   }
 
-  .input-disabled {
+  .textarea-disabled {
     @apply bg-muted text-text-secondary cursor-not-allowed border-border;
   }
 
-  .input-readonly {
+  .textarea-readonly {
     @apply bg-surface text-text-secondary border-border;
   }
 
   /* Icon paddings */
-  .input-icon-left { @apply pl-10; }
-  .input-icon-right { @apply pr-10; }
+  .textarea-icon-left { @apply pl-10; }
+  .textarea-icon-right { @apply pr-10; }
 
   /* Addon (icons containers) */
-  .input-addon {
+  .textarea-addon {
     @apply absolute inset-y-0 flex items-center pointer-events-none;
   }
-  .input-addon-left { @apply left-0 pl-3; }
-  .input-addon-right { @apply right-0 pr-3; }
+  .textarea-addon-left { @apply left-0 pl-3; }
+  .textarea-addon-right { @apply right-0 pr-3; }
 
 
 }

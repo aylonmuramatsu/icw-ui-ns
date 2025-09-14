@@ -1,17 +1,12 @@
 import Nullstack from 'nullstack';
-import { componentsConfig } from '../components-config';
 import { LucideIconsPage } from '../pages/lucide-icons';
 import { ComponentCanvas } from './ComponentCanvas';
 import { ComponentHeader } from './ComponentHeader';
 import { ComponentVariants } from './ComponentVariants';
 
 export class MainContent extends Nullstack {
-  hydrate({ selected_component, ...context }: any) {
-    context.current_component = componentsConfig[selected_component];
-  }
-
   render(context: any) {
-    const { selected_component } = context;
+    const { selected_component, configs } = context;
 
     return (
       <main class="flex-1 min-h-0 overflow-y-auto bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900 text-white">

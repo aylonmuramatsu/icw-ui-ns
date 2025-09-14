@@ -1,8 +1,12 @@
 
 @import './components/button.css';
 @import './components/button-group.css';
+@import './components/alert.css';
 @import './components/input.css';
-@import './components//alert.css';
+@import './components/textarea.css';
+@import './components/switch.css';
+@import './components/select.css';
+
 @theme {
   /* Core Colors */
   --color-primary: #1eb7e1;
