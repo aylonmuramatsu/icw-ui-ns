@@ -1,4 +1,4 @@
-import { Button } from '@icw/ui';
+import { Button, ButtonGroup } from '@icw/ui';
 import { NullstackNode } from 'nullstack';
 
 export interface ComponentVariant {
@@ -25,6 +25,21 @@ export const componentsConfig: Record<string, ComponentConfig> = {
     configs: {
       variant: ['solid', 'outline', 'ghost'],
       color: ['primary', 'secondary', 'danger', 'success', 'info', 'warning'],
+      size: ['xs', 'sm', 'md', 'lg'],
+      disabled: ['false', 'true'],
+    },
+  },
+  button_group: {
+    name: 'Button Group',
+    description: 'Agrupador de botoes',
+    icon: '🎯',
+    component: (props) => (
+      <ButtonGroup {...props}>
+        <Button color="primary">Botao 1</Button>
+        <Button color="secondary">Botao 2</Button>
+      </ButtonGroup>
+    ),
+    configs: {
       size: ['xs', 'sm', 'md', 'lg'],
       disabled: ['false', 'true'],
     },

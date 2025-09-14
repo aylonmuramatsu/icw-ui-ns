@@ -30,7 +30,7 @@ export class Sidebar extends Nullstack {
                 const isSelected = context.selected_component === key;
                 return (
                   <button
-                    class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2 ${
+                    class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${
                       isSelected
                         ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
                         : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
@@ -53,7 +53,7 @@ export class Sidebar extends Nullstack {
                       class={`font-semibold text-xs truncate transition-all duration-300 ${
                         isSelected
                           ? 'text-primary'
-                          : 'text-foreground group-hover:text-primary'
+                          : 'text-white group-hover:text-primary'
                       }`}
                       style="max-width: 120px;"
                     >
@@ -75,28 +75,6 @@ export class Sidebar extends Nullstack {
                 Tools
               </span>
             </div>
-          </div>
-
-          {/* Tools Section */}
-          <div class="flex-1">
-            <button
-              class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2 hover:bg-gradient-to-br from-violet-500/20 via-indigo-500/15 to-purple-500/10 border border-transparent hover:border-violet-300/40 hover:shadow`}
-              style="min-height: 36px;"
-            >
-              {/* Animated background */}
-              <div class="absolute inset-0 bg-gradient-to-br from-violet-500/15 to-indigo-500/15 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              {/* Shine effect */}
-              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 opacity-0 group-hover:opacity-5"></div>
-              <span class="relative text-lg transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 p-1 bg-gradient-to-br from-violet-500/10 to-indigo-500/10 rounded-lg border border-violet-500/10 flex items-center justify-center">
-                🎨
-              </span>
-              <span
-                class="font-semibold text-xs text-foreground group-hover:text-violet-400 transition-all duration-300 truncate"
-                style="max-width: 120px;"
-              >
-                Design Tokens
-              </span>
-            </button>
           </div>
 
           {/* Footer gradient */}
