@@ -1,0 +1,91 @@
+/**
+ * ButtonGroup - Tailwind Layer: components
+ * Segue tokens, variantes, responsividade e acessibilidade.
+ * Não altere sem alinhar com o padrão do restante dos componentes.
+ */
+@layer components {
+  .button-group {
+    @apply inline-flex items-stretch rounded-md overflow-hidden shadow-xs bg-background border border-border;
+  }
+
+  .button-group > .btn,
+  .button-group > button,
+  .button-group > [data-button] {
+    @apply rounded-none -mr-px ml-0 border-r border-border relative z-[1];
+  }
+
+  .button-group > .btn:first-child,
+  .button-group > button:first-child,
+  .button-group > [data-button]:first-child {
+    @apply rounded-l-md ml-0;
+  }
+
+  .button-group > .btn:last-child,
+  .button-group > button:last-child,
+  .button-group > [data-button]:last-child {
+    @apply rounded-r-md border-r-0;
+  }
+
+  .button-group > .btn:focus-visible,
+  .button-group > button:focus-visible,
+  .button-group > [data-button]:focus-visible {
+    @apply z-[2] outline outline-2 outline-primary outline-offset-[-2px];
+  }
+
+  .button-group > .btn[disabled],
+  .button-group > button[disabled],
+  .button-group > [data-button][disabled] {
+    @apply opacity-60 cursor-not-allowed z-0;
+  }
+
+  /* Suporte para variantes de tamanho */
+  .button-group[data-size="xs"] > * { @apply min-h-[1.5rem] text-xs; }
+  .button-group[data-size="sm"] > * { @apply min-h-8 text-sm; }
+  .button-group[data-size="md"] > * { @apply min-h-10 text-base; }
+  .button-group[data-size="lg"] > * { @apply min-h-12 text-lg; }
+
+  /* Responsivo: empilha em telas pequenas se necessário */
+  @media (max-width: 480px) {
+    .button-group {
+      @apply flex-col rounded-md;
+    }
+    .button-group > .btn,
+    .button-group > button,
+    .button-group > [data-button] {
+      @apply mr-0 -mb-px border-r-0 border-b border-border rounded-none;
+    }
+    .button-group > .btn:first-child,
+    .button-group > button:first-child,
+    .button-group > [data-button]:first-child {
+      @apply rounded-t-md;
+    }
+    .button-group > .btn:last-child,
+    .button-group > button:last-child,
+    .button-group > [data-button]:last-child {
+      @apply rounded-b-md border-b-0;
+    }
+  }
+
+  /* Acessibilidade extra: aria-disabled */
+  .button-group > .btn[aria-disabled="true"],
+  .button-group > button[aria-disabled="true"],
+  .button-group > [data-button][aria-disabled="true"] {
+    @apply opacity-60 pointer-events-none;
+  }
+
+  /* Suporte para ghost/outline/solid variantes se necessário (ajuste via tokens) */
+  .button-group > .btn.btn-ghost,
+  .button-group > button.btn-ghost,
+  .button-group > [data-button].btn-ghost {
+    @apply bg-transparent border-transparent text-foreground;
+  }
+
+  .button-group > .btn.btn-outline,
+  .button-group > button.btn-outline,
+  .button-group > [data-button].btn-outline {
+    @apply bg-transparent border-border text-primary;
+  }
+
+  
+}
+

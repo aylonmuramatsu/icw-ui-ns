@@ -1,0 +1,38 @@
+@layer components {
+  /* Wrapper */
+  .select-wrapper {
+    @apply relative;
+  }
+
+  /* Base select */
+  .select {
+    @apply w-full pl-4 pr-4 py-2.5 border border-border rounded-xl shadow-sm transition-all text-sm text-foreground bg-white;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-primary;
+  }
+
+  /* States */
+  .select-error {
+    @apply border-error focus-visible:ring-error focus-visible:border-error;
+  }
+
+  .select-disabled {
+    @apply bg-muted text-text-secondary cursor-not-allowed border-border;
+  }
+
+  .select-readonly {
+    @apply bg-surface text-text-secondary border-border;
+  }
+
+  /* Icon paddings */
+  .select-icon-left { @apply pl-10; }
+  .select-icon-right { @apply pr-10; }
+
+  /* Addon (icons containers) */
+  .select-addon {
+    @apply absolute inset-y-0 flex items-center pointer-events-none;
+  }
+  .select-addon-left { @apply left-0 pl-3; }
+  .select-addon-right { @apply right-0 pr-3; }
+}
+
+

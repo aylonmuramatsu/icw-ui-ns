@@ -1,0 +1,74 @@
+/*
+  Alert component styles
+  Variants: size (xs, sm, md, lg), color (primary, secondary, error, success, info, warning)
+  Utiliza os utilitários globais: text-error, border-error, etc.
+  Visual marcante, sombra, ícone destacado, sem gradiente.
+*/
+@layer components {
+  .alert {
+    @apply flex items-start gap-3 rounded-lg border px-5 py-3 text-base font-medium shadow-md relative overflow-hidden transition-all duration-200;
+  }
+
+  /* Icon container para destaque */
+  .alert > .alert__icon {
+    @apply flex-shrink-0 flex items-center justify-center rounded-full bg-white/80 shadow border border-white/40 mr-2;
+    /* O tamanho do ícone será controlado pelas variantes de tamanho abaixo */
+  }
+
+  /* Size variants: afeta fonte e ícone */
+  .alert-xs {
+    @apply text-xs px-2 py-1 rounded-md;
+  }
+  .alert-xs > .alert__icon {
+    @apply w-4 h-4 text-xs;
+  }
+
+  .alert-sm {
+    @apply text-sm px-3 py-1.5 rounded-md;
+  }
+  .alert-sm > .alert__icon {
+    @apply w-5 h-5 text-sm;
+  }
+
+  .alert-md {
+    @apply text-base px-5 py-3 rounded-lg;
+  }
+  .alert-md > .alert__icon {
+    @apply w-6 h-6 text-base;
+  }
+
+  .alert-lg {
+    @apply text-lg px-6 py-4 rounded-xl;
+  }
+  .alert-lg > .alert__icon {
+    @apply w-7 h-7 text-lg;
+  }
+
+  /* Color variants usando utils globais, sem gradiente, fundo mais sólido */
+  .alert-primary {
+    @apply border-primary bg-primary/20 text-primary;
+  }
+  .alert-secondary {
+    @apply border-secondary bg-secondary/20 text-secondary;
+  }
+  .alert-danger {
+    @apply border-error bg-error/20 text-error;
+  }
+  .alert-success {
+    @apply border-success bg-success/20 text-success;
+  }
+  .alert-info {
+    @apply border-info bg-info/20 text-info;
+  }
+  .alert-warning {
+    @apply border-warning bg-warning/20 text-warning;
+  }
+
+  /* Adiciona um pseudo-elemento decorativo sutil */
+  .alert::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-1 rounded-l-lg;
+    background: currentColor;
+    opacity: 0.12;
+  }
+}
