@@ -1,30 +1,34 @@
 {
-  "name": "icw",
+  "name": "@icw/monorepo",
   "version": "1.0.0",
-  "description": "ICW UI for DX",
-  "keywords": [],
+  "description": "ICW UI Library Monorepo",
+  "private": true,
+  "keywords": [
+    "ui",
+    "components",
+    "library",
+    "monorepo",
+    "tailwind",
+    "typescript"
+  ],
   "scripts": {
     "start": "pnpm run --filter playground start",
-    "test": "pnpm run -r test"
+    "build": "pnpm run -r build",
+    "test": "pnpm run -r test",
+    "type-check": "pnpm run -r type-check",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "clean": "pnpm run -r clean"
   },
   "author": "aylon.muramatsu@gmail.com",
   "license": "ISC",
   "packageManager": "pnpm@10.15.0",
+  "workspaces": [
+    "packages/*",
+    "playground"
+  ],
   "devDependencies": {
-    "prettier": "^3.6.2"
-  },
-  "exports": {
-    "ui": "./packages/ui/src/index.ts",
-    "utils": "./packages/utils/src/index.ts"
-  },
-  "peerDependencies": {
-    "@icw/utils": "^0.0.1",
-    "@icw/ui": "^0.0.1",
-    "nullstack": "~0.20.0",
-    "tailwindcss": "^3.0.0",
-    "tailwind-variants": "^3.1.0",
-    "@tailwindcss/forms": "^0.5.10",
-    "tailwind-merge": "^3.3.1"
-    
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
   }
 }
