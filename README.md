@@ -37,20 +37,6 @@ yarn add @icw/ui @icw/utils
 ```css
 @import "@icw/utils/theme.css";
 ```
-
-2. Configure o Tailwind CSS para usar os utilitários:
-
-```js
-// tailwind.config.js
-module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@icw/ui/**/*.{js,ts,jsx,tsx}"
-  ],
-  // ... sua configuração
-}
-```
-
 ## 📖 Uso
 
 ```tsx
