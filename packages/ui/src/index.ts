@@ -12,6 +12,7 @@ export * as LucideIcons from './components/lucide-icons';
 export { Modal } from './components/modal';
 export { OverlayManager, overlay } from './components/overlay';
 export { PercentageInput } from './components/percentage-input';
+export { Progress } from './components/progress';
 export { Select } from './components/select';
 export { Switch } from './components/switch';
 export { Tabs } from './components/tab/';

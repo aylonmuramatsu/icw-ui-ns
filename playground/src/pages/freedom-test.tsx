@@ -1,4 +1,4 @@
-import { Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Select, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
+import { Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
 
 
 export const FreedomTest = () => {
@@ -543,6 +543,217 @@ export const FreedomTest = () => {
                   Carol
                 </Chip>
               </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Progress Examples */}
+      <div class="mt-8 space-y-8 bg-white p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-6">Progress Component Examples</h2>
+
+        {/* Basic Progress */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Basic Progress</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">25% Progress</p>
+              <Progress value={25} color="primary" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">50% Progress</p>
+              <Progress value={50} color="success" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">75% Progress</p>
+              <Progress value={75} color="warning" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">100% Complete</p>
+              <Progress value={100} color="success" />
+            </div>
+          </div>
+        </section>
+
+        {/* Colors */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Colors</h3>
+          <div class="space-y-3">
+            <Progress value={60} color="primary" showLabel={true} />
+            <Progress value={60} color="secondary" showLabel={true} />
+            <Progress value={60} color="success" showLabel={true} />
+            <Progress value={60} color="danger" showLabel={true} />
+            <Progress value={60} color="info" showLabel={true} />
+            <Progress value={60} color="warning" showLabel={true} />
+          </div>
+        </section>
+
+        {/* Sizes */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Sizes</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Extra Small (xs)</p>
+              <Progress value={70} size="xs" color="primary" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Small (sm)</p>
+              <Progress value={70} size="sm" color="primary" showLabel={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Medium (md) - Default</p>
+              <Progress value={70} size="md" color="primary" showLabel={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Large (lg)</p>
+              <Progress value={70} size="lg" color="primary" showLabel={true} />
+            </div>
+          </div>
+        </section>
+
+        {/* With Labels */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">With Labels</h3>
+          <div class="space-y-3">
+            <Progress value={45} color="primary" showLabel={true} />
+            <Progress value={67} color="success" label="67% Complete" />
+            <Progress value={89} color="info" label="Almost there!" />
+          </div>
+        </section>
+
+        {/* Variants */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Variants</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Default</p>
+              <Progress value={60} variant="default" color="primary" size="lg" showLabel={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Gradient</p>
+              <Progress value={60} variant="gradient" color="primary" size="lg" showLabel={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Striped</p>
+              <Progress value={60} variant="striped" color="primary" size="lg" showLabel={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Striped + Animated</p>
+              <Progress value={60} variant="striped" animated={true} color="primary" size="lg" showLabel={true} />
+            </div>
+          </div>
+        </section>
+
+        {/* Gradient Colors */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Gradient Variant</h3>
+          <div class="space-y-3">
+            <Progress value={70} variant="gradient" color="primary" showLabel={true} />
+            <Progress value={70} variant="gradient" color="success" showLabel={true} />
+            <Progress value={70} variant="gradient" color="danger" showLabel={true} />
+            <Progress value={70} variant="gradient" color="info" showLabel={true} />
+            <Progress value={70} variant="gradient" color="warning" showLabel={true} />
+          </div>
+        </section>
+
+        {/* Indeterminate (Loading) */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Indeterminate (Loading)</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Loading...</p>
+              <Progress indeterminate={true} color="primary" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Processing...</p>
+              <Progress indeterminate={true} color="info" size="lg" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Gradient Loading</p>
+              <Progress indeterminate={true} variant="gradient" color="success" size="lg" />
+            </div>
+          </div>
+        </section>
+
+        {/* Practical Use Cases */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Practical Use Cases</h3>
+
+          <div class="space-y-6">
+            {/* File Upload */}
+            <div class="p-4 border rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <LucideIcons.File size={20} class="text-gray-600" />
+                  <span class="text-sm font-medium">document.pdf</span>
+                </div>
+                <span class="text-xs text-gray-500">2.5 MB / 5 MB</span>
+              </div>
+              <Progress value={50} color="primary" size="sm" showLabel={true} />
+            </div>
+
+            {/* Download Progress */}
+            <div class="p-4 border rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <LucideIcons.Download size={20} class="text-blue-600" />
+                  <span class="text-sm font-medium">Downloading update...</span>
+                </div>
+                <span class="text-xs text-gray-500">750 MB / 1 GB</span>
+              </div>
+              <Progress value={75} variant="gradient" color="info" size="md" showLabel={true} />
+            </div>
+
+            {/* Skills/Proficiency */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Skills</h4>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-xs font-medium">React</span>
+                    <span class="text-xs text-gray-500">Expert</span>
+                  </div>
+                  <Progress value={90} color="success" size="sm" />
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-xs font-medium">TypeScript</span>
+                    <span class="text-xs text-gray-500">Advanced</span>
+                  </div>
+                  <Progress value={75} color="info" size="sm" />
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="text-xs font-medium">Node.js</span>
+                    <span class="text-xs text-gray-500">Intermediate</span>
+                  </div>
+                  <Progress value={60} color="warning" size="sm" />
+                </div>
+              </div>
+            </div>
+
+            {/* Task Completion */}
+            <div class="p-4 border rounded-lg">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-sm font-semibold">Project Progress</h4>
+                <Badge color="info" variant="soft" size="sm">In Progress</Badge>
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between text-xs text-gray-600 mb-1">
+                  <span>8 of 12 tasks completed</span>
+                  <span>67%</span>
+                </div>
+                <Progress value={67} variant="striped" animated={true} color="primary" size="lg" />
+              </div>
+            </div>
+
+            {/* Loading State */}
+            <div class="p-4 border rounded-lg">
+              <div class="flex items-center gap-2 mb-3">
+                <LucideIcons.RefreshCw class="text-primary animate-spin size-10" />
+                <span class="text-sm font-medium">Processing your request...</span>
+              </div>
+              <Progress indeterminate={true} color="primary" size="md" />
             </div>
           </div>
         </section>

@@ -1,0 +1,199 @@
+/* ============================================
+   PROGRESS - Base Styles
+   ============================================ */
+
+@layer components {
+  .progress {
+    @apply w-full bg-gray-200 rounded-full overflow-hidden relative;
+  }
+
+  /* ============================================
+     SIZE VARIANTS
+     ============================================ */
+
+  .progress[data-size='xs'] {
+    @apply h-1;
+  }
+
+  .progress[data-size='sm'] {
+    @apply h-2;
+  }
+
+  .progress[data-size='md'] {
+    @apply h-3;
+  }
+
+  .progress[data-size='lg'] {
+    @apply h-4;
+  }
+
+  /* ============================================
+     PROGRESS BAR
+     ============================================ */
+
+  .progress__bar {
+    @apply h-full transition-all duration-500 ease-out relative;
+    @apply flex items-center justify-center;
+  }
+
+  /* ============================================
+     COLOR VARIANTS - Default
+     ============================================ */
+
+  .progress__bar[data-variant='default'][data-color='primary'] {
+    @apply bg-primary;
+  }
+
+  .progress__bar[data-variant='default'][data-color='secondary'] {
+    @apply bg-secondary;
+  }
+
+  .progress__bar[data-variant='default'][data-color='danger'] {
+    @apply bg-error;
+  }
+
+  .progress__bar[data-variant='default'][data-color='success'] {
+    @apply bg-success;
+  }
+
+  .progress__bar[data-variant='default'][data-color='info'] {
+    @apply bg-info;
+  }
+
+  .progress__bar[data-variant='default'][data-color='warning'] {
+    @apply bg-warning;
+  }
+
+  /* ============================================
+     COLOR VARIANTS - Gradient
+     ============================================ */
+
+  .progress__bar[data-variant='gradient'][data-color='primary'] {
+    @apply bg-gradient-to-r from-primary to-blue-600;
+  }
+
+  .progress__bar[data-variant='gradient'][data-color='secondary'] {
+    @apply bg-gradient-to-r from-secondary to-red-700;
+  }
+
+  .progress__bar[data-variant='gradient'][data-color='danger'] {
+    @apply bg-gradient-to-r from-error to-red-600;
+  }
+
+  .progress__bar[data-variant='gradient'][data-color='success'] {
+    @apply bg-gradient-to-r from-success to-green-600;
+  }
+
+  .progress__bar[data-variant='gradient'][data-color='info'] {
+    @apply bg-gradient-to-r from-info to-blue-600;
+  }
+
+  .progress__bar[data-variant='gradient'][data-color='warning'] {
+    @apply bg-gradient-to-r from-warning to-orange-600;
+  }
+
+  /* ============================================
+     STRIPED VARIANT
+     ============================================ */
+
+  .progress__bar[data-variant='striped'] {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 1rem 1rem;
+  }
+
+  /* Striped colors */
+  .progress__bar[data-variant='striped'][data-color='primary'] {
+    @apply bg-primary;
+  }
+
+  .progress__bar[data-variant='striped'][data-color='secondary'] {
+    @apply bg-secondary;
+  }
+
+  .progress__bar[data-variant='striped'][data-color='danger'] {
+    @apply bg-error;
+  }
+
+  .progress__bar[data-variant='striped'][data-color='success'] {
+    @apply bg-success;
+  }
+
+  .progress__bar[data-variant='striped'][data-color='info'] {
+    @apply bg-info;
+  }
+
+  .progress__bar[data-variant='striped'][data-color='warning'] {
+    @apply bg-warning;
+  }
+
+  /* ============================================
+     ANIMATED STRIPES
+     ============================================ */
+
+  @keyframes progress-stripes {
+    0% {
+      background-position: 1rem 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .progress__bar[data-animated='true'][data-variant='striped'] {
+    animation: progress-stripes 1s linear infinite;
+  }
+
+  /* ============================================
+     INDETERMINATE (Loading infinito)
+     ============================================ */
+
+  @keyframes progress-indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(400%);
+    }
+  }
+
+  .progress__bar[data-indeterminate='true'] {
+    @apply w-1/4;
+    animation: progress-indeterminate 1.5s ease-in-out infinite;
+  }
+
+  /* ============================================
+     PROGRESS LABEL
+     ============================================ */
+
+  .progress__label {
+    @apply text-[10px] font-bold text-white px-2;
+    @apply whitespace-nowrap select-none;
+  }
+
+  /* Hide label on xs size */
+  .progress[data-size='xs'] .progress__label {
+    @apply hidden;
+  }
+
+  /* Smaller label on sm */
+  .progress[data-size='sm'] .progress__label {
+    @apply text-[9px];
+  }
+
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+
+  .progress[aria-valuenow='100'] .progress__bar {
+    @apply rounded-r-full;
+  }
+}
