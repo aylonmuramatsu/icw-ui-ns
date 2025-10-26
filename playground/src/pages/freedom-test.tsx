@@ -1,4 +1,4 @@
-import { Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Skeleton, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
+import { Avatar, AvatarGroup, Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Skeleton, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
 
 
 export const FreedomTest = () => {
@@ -977,6 +977,362 @@ export const FreedomTest = () => {
                 <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
                 <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
                 <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Avatar Examples */}
+      <div class="mt-8 space-y-8 bg-white p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-6">Avatar & AvatarGroup Examples</h2>
+
+        {/* Basic Avatars */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Basic Avatars</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <Avatar src="https://i.pravatar.cc/150?img=1" alt="User 1" />
+            <Avatar src="https://i.pravatar.cc/150?img=2" alt="User 2" />
+            <Avatar src="https://i.pravatar.cc/150?img=3" alt="User 3" />
+            <Avatar fallback="John Doe" />
+            <Avatar fallback="Jane Smith" />
+            <Avatar icon={<LucideIcons.User size={20} />} />
+          </div>
+        </section>
+
+        {/* Sizes */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Sizes</h3>
+          <div class="flex flex-wrap items-end gap-4">
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=4" size="xs" />
+              <p class="text-xs mt-1">xs</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=5" size="sm" />
+              <p class="text-xs mt-1">sm</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=6" size="md" />
+              <p class="text-xs mt-1">md</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=7" size="lg" />
+              <p class="text-xs mt-1">lg</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=8" size="xl" />
+              <p class="text-xs mt-1">xl</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=9" size="2xl" />
+              <p class="text-xs mt-1">2xl</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Shapes */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Shapes</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=10" shape="circle" size="lg" />
+              <p class="text-xs mt-1">Circle</p>
+            </div>
+            <div class="text-center">
+              <Avatar src="https://i.pravatar.cc/150?img=11" shape="square" size="lg" />
+              <p class="text-xs mt-1">Square</p>
+            </div>
+          </div>
+        </section>
+
+        {/* With Status */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">With Status Indicator</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="text-center">
+              <Avatar
+                src="https://i.pravatar.cc/150?img=12"
+                status="online"
+                size="lg"
+              />
+              <p class="text-xs mt-1">Online</p>
+            </div>
+            <div class="text-center">
+              <Avatar
+                src="https://i.pravatar.cc/150?img=13"
+                status="offline"
+                size="lg"
+              />
+              <p class="text-xs mt-1">Offline</p>
+            </div>
+            <div class="text-center">
+              <Avatar
+                src="https://i.pravatar.cc/150?img=14"
+                status="away"
+                size="lg"
+              />
+              <p class="text-xs mt-1">Away</p>
+            </div>
+            <div class="text-center">
+              <Avatar
+                src="https://i.pravatar.cc/150?img=15"
+                status="busy"
+                size="lg"
+              />
+              <p class="text-xs mt-1">Busy</p>
+            </div>
+          </div>
+        </section>
+
+        {/* With Border */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">With Border</h3>
+          <div class="flex flex-wrap items-center gap-4 bg-gray-100 p-4 rounded-lg">
+            <Avatar
+              src="https://i.pravatar.cc/150?img=16"
+              border={true}
+              size="lg"
+            />
+            <Avatar
+              src="https://i.pravatar.cc/150?img=17"
+              border={true}
+              status="online"
+              size="lg"
+            />
+            <Avatar
+              fallback="AB"
+              border={true}
+              size="lg"
+            />
+          </div>
+        </section>
+
+        {/* Fallback Variations */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Fallback Variations</h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="text-center">
+              <Avatar fallback="John Doe" size="lg" />
+              <p class="text-xs mt-1">Initials (2 words)</p>
+            </div>
+            <div class="text-center">
+              <Avatar fallback="Alice" size="lg" />
+              <p class="text-xs mt-1">Initials (1 word)</p>
+            </div>
+            <div class="text-center">
+              <Avatar icon={<LucideIcons.User size={24} />} size="lg" />
+              <p class="text-xs mt-1">Custom Icon</p>
+            </div>
+            <div class="text-center">
+              <Avatar size="lg" />
+              <p class="text-xs mt-1">Default Icon</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Avatar Group - Basic */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Avatar Group - Basic</h3>
+          <AvatarGroup>
+            <Avatar src="https://i.pravatar.cc/150?img=20" alt="User 1" />
+            <Avatar src="https://i.pravatar.cc/150?img=21" alt="User 2" />
+            <Avatar src="https://i.pravatar.cc/150?img=22" alt="User 3" />
+            <Avatar src="https://i.pravatar.cc/150?img=23" alt="User 4" />
+            <Avatar src="https://i.pravatar.cc/150?img=24" alt="User 5" />
+          </AvatarGroup>
+        </section>
+
+        {/* Avatar Group - With Max */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Avatar Group - With Max Count</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Max 3 avatars:</p>
+              <AvatarGroup max={3}>
+                <Avatar src="https://i.pravatar.cc/150?img=25" />
+                <Avatar src="https://i.pravatar.cc/150?img=26" />
+                <Avatar src="https://i.pravatar.cc/150?img=27" />
+                <Avatar src="https://i.pravatar.cc/150?img=28" />
+                <Avatar src="https://i.pravatar.cc/150?img=29" />
+                <Avatar src="https://i.pravatar.cc/150?img=30" />
+                <Avatar src="https://i.pravatar.cc/150?img=31" />
+              </AvatarGroup>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Max 5 avatars:</p>
+              <AvatarGroup max={5}>
+                <Avatar src="https://i.pravatar.cc/150?img=32" />
+                <Avatar src="https://i.pravatar.cc/150?img=33" />
+                <Avatar src="https://i.pravatar.cc/150?img=34" />
+                <Avatar src="https://i.pravatar.cc/150?img=35" />
+                <Avatar src="https://i.pravatar.cc/150?img=36" />
+                <Avatar src="https://i.pravatar.cc/150?img=37" />
+                <Avatar src="https://i.pravatar.cc/150?img=38" />
+                <Avatar src="https://i.pravatar.cc/150?img=39" />
+              </AvatarGroup>
+            </div>
+          </div>
+        </section>
+
+        {/* Avatar Group - Sizes */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Avatar Group - Sizes</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Small:</p>
+              <AvatarGroup size="sm">
+                <Avatar src="https://i.pravatar.cc/150?img=40" />
+                <Avatar src="https://i.pravatar.cc/150?img=41" />
+                <Avatar src="https://i.pravatar.cc/150?img=42" />
+                <Avatar fallback="AB" />
+              </AvatarGroup>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Medium:</p>
+              <AvatarGroup size="md">
+                <Avatar src="https://i.pravatar.cc/150?img=43" />
+                <Avatar src="https://i.pravatar.cc/150?img=44" />
+                <Avatar src="https://i.pravatar.cc/150?img=45" />
+                <Avatar fallback="CD" />
+              </AvatarGroup>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Large:</p>
+              <AvatarGroup size="lg">
+                <Avatar src="https://i.pravatar.cc/150?img=46" />
+                <Avatar src="https://i.pravatar.cc/150?img=47" />
+                <Avatar src="https://i.pravatar.cc/150?img=48" />
+                <Avatar fallback="EF" />
+              </AvatarGroup>
+            </div>
+          </div>
+        </section>
+
+        {/* Avatar Group - Spacing */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Avatar Group - Spacing</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Tight:</p>
+              <AvatarGroup spacing="tight">
+                <Avatar src="https://i.pravatar.cc/150?img=49" />
+                <Avatar src="https://i.pravatar.cc/150?img=50" />
+                <Avatar src="https://i.pravatar.cc/150?img=51" />
+                <Avatar src="https://i.pravatar.cc/150?img=52" />
+              </AvatarGroup>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Normal:</p>
+              <AvatarGroup spacing="normal">
+                <Avatar src="https://i.pravatar.cc/150?img=53" />
+                <Avatar src="https://i.pravatar.cc/150?img=54" />
+                <Avatar src="https://i.pravatar.cc/150?img=55" />
+                <Avatar src="https://i.pravatar.cc/150?img=56" />
+              </AvatarGroup>
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Loose:</p>
+              <AvatarGroup spacing="loose">
+                <Avatar src="https://i.pravatar.cc/150?img=57" />
+                <Avatar src="https://i.pravatar.cc/150?img=58" />
+                <Avatar src="https://i.pravatar.cc/150?img=59" />
+                <Avatar src="https://i.pravatar.cc/150?img=60" />
+              </AvatarGroup>
+            </div>
+          </div>
+        </section>
+
+        {/* Practical Use Cases */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Practical Use Cases</h3>
+
+          <div class="space-y-6">
+            {/* User Profile Card */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">User Profile Card</h4>
+              <div class="flex items-center gap-4">
+                <Avatar
+                  src="https://i.pravatar.cc/150?img=61"
+                  size="xl"
+                  status="online"
+                />
+                <div class="flex-1">
+                  <h5 class="font-semibold text-lg">John Doe</h5>
+                  <p class="text-sm text-gray-600">Product Designer</p>
+                  <div class="flex gap-2 mt-2">
+                    <Badge color="primary" variant="soft" size="sm">Pro</Badge>
+                    <Badge color="success" variant="soft" size="sm">Verified</Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Team Members */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Team Members</h4>
+              <div class="space-y-3">
+                {['Alice Johnson', 'Bob Smith', 'Carol White'].map((name, i) => (
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <Avatar
+                        src={`https://i.pravatar.cc/150?img=${62 + i}`}
+                        status={i === 0 ? 'online' : i === 1 ? 'away' : 'offline'}
+                      />
+                      <div>
+                        <p class="font-medium text-sm">{name}</p>
+                        <p class="text-xs text-gray-500">
+                          {i === 0 ? 'Active now' : i === 1 ? 'Away' : 'Offline'}
+                        </p>
+                      </div>
+                    </div>
+                    <Button variant="ghost" size="sm">Message</Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Project Collaborators */}
+            <div class="p-4 border rounded-lg">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="text-sm font-semibold">Project Collaborators</h4>
+                <Button variant="outline" size="sm">
+                  <LucideIcons.Plus size={14} class="mr-1" />
+                  Add
+                </Button>
+              </div>
+              <AvatarGroup max={4}>
+                <Avatar src="https://i.pravatar.cc/150?img=65" border={true} />
+                <Avatar src="https://i.pravatar.cc/150?img=66" border={true} />
+                <Avatar src="https://i.pravatar.cc/150?img=67" border={true} />
+                <Avatar src="https://i.pravatar.cc/150?img=68" border={true} />
+                <Avatar src="https://i.pravatar.cc/150?img=69" border={true} />
+                <Avatar src="https://i.pravatar.cc/150?img=70" border={true} />
+              </AvatarGroup>
+            </div>
+
+            {/* Comments */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Comments</h4>
+              <div class="space-y-4">
+                {[
+                  { name: 'Sarah Connor', comment: 'Great work on this project!' },
+                  { name: 'Mike Ross', comment: 'I have some suggestions for improvement.' },
+                ].map((item, i) => (
+                  <div class="flex gap-3">
+                    <Avatar
+                      src={`https://i.pravatar.cc/150?img=${71 + i}`}
+                      size="sm"
+                    />
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="font-medium text-sm">{item.name}</span>
+                        <span class="text-xs text-gray-500">2h ago</span>
+                      </div>
+                      <p class="text-sm text-gray-700">{item.comment}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

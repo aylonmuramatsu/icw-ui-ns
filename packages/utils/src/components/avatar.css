@@ -1,0 +1,211 @@
+/* ============================================
+   AVATAR - Base Styles
+   ============================================ */
+
+@layer components {
+  .avatar {
+    @apply relative inline-flex items-center justify-center shrink-0;
+    @apply bg-gray-200 text-gray-600 font-medium;
+  }
+
+  /* With border */
+  .avatar--border {
+    @apply ring-2 ring-white;
+  }
+
+  /* Excess avatar (remaining count) */
+  .avatar--excess {
+    @apply bg-gray-300 text-gray-700;
+  }
+
+  /* ============================================
+     SIZE VARIANTS
+     ============================================ */
+
+  .avatar[data-size='xs'] {
+    @apply size-6 text-[10px];
+  }
+
+  .avatar[data-size='sm'] {
+    @apply size-8 text-xs;
+  }
+
+  .avatar[data-size='md'] {
+    @apply size-10 text-sm;
+  }
+
+  .avatar[data-size='lg'] {
+    @apply size-12 text-base;
+  }
+
+  .avatar[data-size='xl'] {
+    @apply size-16 text-lg;
+  }
+
+  .avatar[data-size='2xl'] {
+    @apply size-20 text-xl;
+  }
+
+  /* ============================================
+     SHAPE VARIANTS
+     ============================================ */
+
+  .avatar[data-shape='circle'] {
+    @apply rounded-full;
+  }
+
+  .avatar[data-shape='circle'] .avatar__image,
+  .avatar[data-shape='circle'] .avatar__fallback {
+    @apply rounded-full overflow-hidden;
+  }
+
+  .avatar[data-shape='square'] {
+    @apply rounded-lg;
+  }
+
+  .avatar[data-shape='square'] .avatar__image,
+  .avatar[data-shape='square'] .avatar__fallback {
+    @apply rounded-lg overflow-hidden;
+  }
+
+  /* ============================================
+     AVATAR PARTS - Image
+     ============================================ */
+
+  .avatar__image {
+    @apply size-full object-cover block;
+  }
+
+  /* ============================================
+     AVATAR PARTS - Fallback
+     ============================================ */
+
+  .avatar__fallback {
+    @apply size-full flex items-center justify-center;
+  }
+
+  .avatar__initials {
+    @apply select-none;
+  }
+
+  .avatar__icon {
+    @apply flex items-center justify-center;
+  }
+
+  .avatar[data-size='xs'] .avatar__icon {
+    @apply size-3;
+  }
+
+  .avatar[data-size='sm'] .avatar__icon {
+    @apply size-4;
+  }
+
+  .avatar[data-size='md'] .avatar__icon {
+    @apply size-5;
+  }
+
+  .avatar[data-size='lg'] .avatar__icon {
+    @apply size-6;
+  }
+
+  .avatar[data-size='xl'] .avatar__icon {
+    @apply size-8;
+  }
+
+  .avatar[data-size='2xl'] .avatar__icon {
+    @apply size-10;
+  }
+
+  .avatar__default-icon {
+    @apply size-3/5;
+  }
+
+  /* ============================================
+     AVATAR PARTS - Status Indicator
+     ============================================ */
+
+  .avatar__status {
+    @apply absolute rounded-full ring-2 ring-white;
+  }
+
+  /* Status positioning based on avatar size */
+  .avatar__status[data-size='xs'] {
+    @apply size-1.5 bottom-0 right-0;
+  }
+
+  .avatar__status[data-size='sm'] {
+    @apply size-2 bottom-0 right-0;
+  }
+
+  .avatar__status[data-size='md'] {
+    @apply size-2.5 bottom-0 right-0;
+  }
+
+  .avatar__status[data-size='lg'] {
+    @apply size-3 bottom-0 right-0;
+  }
+
+  .avatar__status[data-size='xl'] {
+    @apply size-4 bottom-0 right-0;
+  }
+
+  .avatar__status[data-size='2xl'] {
+    @apply size-5 bottom-0 right-0;
+  }
+
+  /* Status colors */
+  .avatar__status[data-status='online'] {
+    @apply bg-green-500;
+  }
+
+  .avatar__status[data-status='offline'] {
+    @apply bg-gray-400;
+  }
+
+  .avatar__status[data-status='away'] {
+    @apply bg-yellow-500;
+  }
+
+  .avatar__status[data-status='busy'] {
+    @apply bg-red-500;
+  }
+
+  /* ============================================
+     AVATAR GROUP
+     ============================================ */
+
+  .avatar-group {
+    @apply flex items-center;
+  }
+
+  /* Spacing variants */
+  .avatar-group[data-spacing='tight'] {
+    @apply -space-x-3;
+  }
+
+  .avatar-group[data-spacing='normal'] {
+    @apply -space-x-2;
+  }
+
+  .avatar-group[data-spacing='loose'] {
+    @apply -space-x-1;
+  }
+
+  /* Stacking order - later avatars appear behind */
+  .avatar-group > .avatar {
+    @apply ring-2 ring-white transition-transform duration-200;
+  }
+
+  .avatar-group > .avatar:hover {
+    @apply scale-110 z-10;
+  }
+
+  /* Adjust excess avatar */
+  .avatar-group > .avatar--excess {
+    @apply cursor-default;
+  }
+
+  .avatar-group > .avatar--excess:hover {
+    @apply scale-100;
+  }
+}

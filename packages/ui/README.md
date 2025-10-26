@@ -97,7 +97,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 
 ## 🟦 Data Display
 
-- [ ] **Avatar**
+- [x] **Avatar**
 - [ ] **Table**
 - [ ] **List**
 - [ ] **Card**

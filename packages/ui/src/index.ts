@@ -1,4 +1,5 @@
 export { Alert } from './components/alert';
+export { Avatar, AvatarGroup } from './components/avatar';
 export { Badge } from './components/badge';
 export { Button } from './components/button';
 export { ButtonGroup } from './components/button-group';
