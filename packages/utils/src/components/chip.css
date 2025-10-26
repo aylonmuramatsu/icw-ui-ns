@@ -1,0 +1,328 @@
+/* ============================================
+   CHIP - Base Styles
+   ============================================ */
+
+@layer components {
+  .chip {
+    @apply inline-flex items-center gap-2 font-medium transition-all duration-200;
+    @apply border select-none rounded-full;
+  }
+
+  /* Clickable chips */
+  .chip--clickable {
+    @apply cursor-pointer;
+  }
+
+  .chip--clickable:hover:not(.chip--disabled) {
+    @apply scale-105 shadow-md;
+  }
+
+  .chip--clickable:active:not(.chip--disabled) {
+    @apply scale-95;
+  }
+
+  /* Disabled state */
+  .chip--disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* ============================================
+     SIZE VARIANTS
+     ============================================ */
+
+  .chip[data-size='xs'] {
+    @apply text-xs px-2 py-1 min-h-[1.5rem];
+  }
+
+  .chip[data-size='sm'] {
+    @apply text-sm px-3 py-1.5 min-h-[2rem];
+  }
+
+  .chip[data-size='md'] {
+    @apply text-sm px-4 py-2 min-h-[2.5rem];
+  }
+
+  .chip[data-size='lg'] {
+    @apply text-base px-5 py-2.5 min-h-[3rem];
+  }
+
+  /* ============================================
+     VARIANT: SOLID
+     ============================================ */
+
+  .chip[data-variant='solid'] {
+    @apply text-white shadow-sm;
+  }
+
+  .chip[data-variant='solid'][data-color='primary'] {
+    @apply bg-primary border-primary;
+  }
+
+  .chip[data-variant='solid'][data-color='secondary'] {
+    @apply bg-secondary border-secondary;
+  }
+
+  .chip[data-variant='solid'][data-color='danger'] {
+    @apply bg-error border-error;
+  }
+
+  .chip[data-variant='solid'][data-color='success'] {
+    @apply bg-success border-success;
+  }
+
+  .chip[data-variant='solid'][data-color='info'] {
+    @apply bg-info border-info;
+  }
+
+  .chip[data-variant='solid'][data-color='warning'] {
+    @apply bg-warning border-warning;
+  }
+
+  /* ============================================
+     VARIANT: OUTLINE
+     ============================================ */
+
+  .chip[data-variant='outline'] {
+    @apply bg-transparent border-2;
+  }
+
+  .chip[data-variant='outline'][data-color='primary'] {
+    @apply border-primary text-primary;
+  }
+
+  .chip[data-variant='outline'][data-color='secondary'] {
+    @apply border-secondary text-secondary;
+  }
+
+  .chip[data-variant='outline'][data-color='danger'] {
+    @apply border-error text-error;
+  }
+
+  .chip[data-variant='outline'][data-color='success'] {
+    @apply border-success text-success;
+  }
+
+  .chip[data-variant='outline'][data-color='info'] {
+    @apply border-info text-info;
+  }
+
+  .chip[data-variant='outline'][data-color='warning'] {
+    @apply border-warning text-warning;
+  }
+
+  /* Outline hover - fill background */
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='primary'] {
+    @apply bg-primary text-white;
+  }
+
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='secondary'] {
+    @apply bg-secondary text-white;
+  }
+
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='danger'] {
+    @apply bg-error text-white;
+  }
+
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='success'] {
+    @apply bg-success text-white;
+  }
+
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='info'] {
+    @apply bg-info text-white;
+  }
+
+  .chip--clickable[data-variant='outline']:hover:not(
+      .chip--disabled
+    )[data-color='warning'] {
+    @apply bg-warning text-white;
+  }
+
+  /* ============================================
+     VARIANT: SOFT
+     ============================================ */
+
+  .chip[data-variant='soft'] {
+    @apply border-transparent;
+  }
+
+  .chip[data-variant='soft'][data-color='primary'] {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .chip[data-variant='soft'][data-color='secondary'] {
+    @apply bg-secondary/10 text-secondary;
+  }
+
+  .chip[data-variant='soft'][data-color='danger'] {
+    @apply bg-error/10 text-error;
+  }
+
+  .chip[data-variant='soft'][data-color='success'] {
+    @apply bg-success/10 text-success;
+  }
+
+  .chip[data-variant='soft'][data-color='info'] {
+    @apply bg-info/10 text-info;
+  }
+
+  .chip[data-variant='soft'][data-color='warning'] {
+    @apply bg-warning/10 text-warning;
+  }
+
+  /* Soft hover - darker background */
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='primary'] {
+    @apply bg-primary/20;
+  }
+
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='secondary'] {
+    @apply bg-secondary/20;
+  }
+
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='danger'] {
+    @apply bg-error/20;
+  }
+
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='success'] {
+    @apply bg-success/20;
+  }
+
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='info'] {
+    @apply bg-info/20;
+  }
+
+  .chip--clickable[data-variant='soft']:hover:not(
+      .chip--disabled
+    )[data-color='warning'] {
+    @apply bg-warning/20;
+  }
+
+  /* ============================================
+     SELECTED STATE
+     ============================================ */
+
+  .chip[data-selected='true'][data-variant='outline'] {
+    @apply bg-current/5;
+  }
+
+  .chip[data-selected='true'][data-variant='soft'] {
+    @apply ring-2 ring-current/30;
+  }
+
+  /* ============================================
+     CHIP PARTS - Avatar
+     ============================================ */
+
+  .chip__avatar {
+    @apply rounded-full object-cover shrink-0;
+  }
+
+  .chip__avatar[data-size='xs'] {
+    @apply size-4 -ml-1;
+  }
+
+  .chip__avatar[data-size='sm'] {
+    @apply size-5 -ml-1.5;
+  }
+
+  .chip__avatar[data-size='md'] {
+    @apply size-6 -ml-2;
+  }
+
+  .chip__avatar[data-size='lg'] {
+    @apply size-8 -ml-2.5;
+  }
+
+  /* ============================================
+     CHIP PARTS - Icon
+     ============================================ */
+
+  .chip__icon {
+    @apply inline-flex items-center justify-center shrink-0;
+  }
+
+  .chip[data-size='xs'] .chip__icon {
+    @apply size-3;
+  }
+
+  .chip[data-size='sm'] .chip__icon {
+    @apply size-3.5;
+  }
+
+  .chip[data-size='md'] .chip__icon {
+    @apply size-4;
+  }
+
+  .chip[data-size='lg'] .chip__icon {
+    @apply size-5;
+  }
+
+  /* ============================================
+     CHIP PARTS - Content
+     ============================================ */
+
+  .chip__content {
+    @apply inline-flex items-center whitespace-nowrap;
+  }
+
+  /* ============================================
+     CHIP PARTS - Remove Button
+     ============================================ */
+
+  .chip__remove {
+    @apply inline-flex items-center justify-center shrink-0;
+    @apply rounded-full transition-all duration-200;
+    @apply hover:bg-black/10 active:bg-black/20;
+  }
+
+  .chip[data-size='xs'] .chip__remove {
+    @apply size-4 p-0.5 -mr-1;
+  }
+
+  .chip[data-size='sm'] .chip__remove {
+    @apply size-5 p-1 -mr-1;
+  }
+
+  .chip[data-size='md'] .chip__remove {
+    @apply size-6 p-1 -mr-1.5;
+  }
+
+  .chip[data-size='lg'] .chip__remove {
+    @apply size-7 p-1.5 -mr-2;
+  }
+
+  /* Remove button hover for solid variant */
+  .chip[data-variant='solid'] .chip__remove {
+    @apply hover:bg-white/20 active:bg-white/30;
+  }
+
+  /* Remove button hover for outline/soft variants */
+  .chip[data-variant='outline'] .chip__remove,
+  .chip[data-variant='soft'] .chip__remove {
+    @apply hover:bg-current/10 active:bg-current/20;
+  }
+
+  /* Remove button disabled */
+  .chip--disabled .chip__remove {
+    @apply pointer-events-none;
+  }
+}

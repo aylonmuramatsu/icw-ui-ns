@@ -2,6 +2,7 @@ export { Alert } from './components/alert';
 export { Badge } from './components/badge';
 export { Button } from './components/button';
 export { ButtonGroup } from './components/button-group';
+export { Chip } from './components/chip';
 export { CurrencyInput } from './components/currency-input';
 export { DurationInput } from './components/duration-input';
 export { Form } from './components/form/index';
