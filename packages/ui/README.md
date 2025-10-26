@@ -100,7 +100,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 - [x] **Avatar**
 - [ ] **Table**
 - [ ] **List**
-- [ ] **Card**
+- [x] **Card**
 - [ ] **Timeline**
 - [ ] **Tag**
 - [ ] **EmptyState**

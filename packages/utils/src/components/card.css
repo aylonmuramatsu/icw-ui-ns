@@ -1,0 +1,194 @@
+/* ============================================
+   CARD - Base Styles
+   ============================================ */
+
+@layer components {
+  .card {
+    @apply relative rounded-lg overflow-hidden;
+    @apply bg-white border border-gray-200;
+    @apply transition-all duration-200;
+  }
+
+  /* ============================================
+     VARIANT STYLES
+     ============================================ */
+
+  /* Default - com borda simples */
+  .card[data-variant='default'] {
+    @apply bg-white border border-gray-200;
+  }
+
+  /* Outlined - borda mais forte */
+  .card[data-variant='outlined'] {
+    @apply bg-white border-2 border-gray-300;
+  }
+
+  /* Elevated - com sombra */
+  .card[data-variant='elevated'] {
+    @apply bg-white border-0 shadow-md;
+  }
+
+  /* Ghost - sem borda, fundo sutilmente diferente */
+  .card[data-variant='ghost'] {
+    @apply bg-gray-50 border-0;
+  }
+
+  /* ============================================
+     PADDING VARIANTS
+     ============================================ */
+
+  .card[data-padding='none'] {
+    @apply p-0;
+  }
+
+  .card[data-padding='sm'] {
+    @apply p-3;
+  }
+
+  .card[data-padding='md'] {
+    @apply p-4;
+  }
+
+  .card[data-padding='lg'] {
+    @apply p-6;
+  }
+
+  /* ============================================
+     INTERACTIVE STATES
+     ============================================ */
+
+  /* Hoverable - efeito sutil no hover */
+  .card--hoverable:hover {
+    @apply shadow-lg border-gray-300;
+    @apply -translate-y-0.5;
+  }
+
+  .card--hoverable[data-variant='elevated']:hover {
+    @apply shadow-xl;
+  }
+
+  /* Clickable - cursor pointer e efeito mais forte */
+  .card--clickable {
+    @apply cursor-pointer;
+  }
+
+  .card--clickable:hover {
+    @apply shadow-xl border-primary/30;
+    @apply -translate-y-1;
+  }
+
+  .card--clickable[data-variant='elevated']:hover {
+    @apply shadow-2xl;
+  }
+
+  .card--clickable:active {
+    @apply scale-[0.98];
+  }
+
+  /* ============================================
+     CARD PARTS - Header
+     ============================================ */
+
+  .card__header {
+    @apply px-4 py-3 border-b border-gray-200;
+    @apply font-semibold text-gray-900;
+  }
+
+  /* Remove padding do card quando tem header */
+  .card[data-padding='md'] .card__header,
+  .card[data-padding='lg'] .card__header {
+    @apply -mx-4 -mt-4 mb-4;
+    @apply px-4 py-3;
+  }
+
+  .card[data-padding='sm'] .card__header {
+    @apply -mx-3 -mt-3 mb-3;
+    @apply px-3 py-2;
+  }
+
+  .card[data-padding='none'] .card__header {
+    @apply px-4 py-3;
+    @apply mb-0;
+  }
+
+  /* ============================================
+     CARD PARTS - Body
+     ============================================ */
+
+  .card__body {
+    @apply text-gray-700;
+  }
+
+  /* Padding customizado quando dentro de card com padding none */
+  .card[data-padding='none'] .card__body {
+    @apply px-4 py-3;
+  }
+
+  /* ============================================
+     CARD PARTS - Footer
+     ============================================ */
+
+  .card__footer {
+    @apply px-4 py-3 border-t border-gray-200;
+    @apply bg-gray-50;
+  }
+
+  /* Remove padding do card quando tem footer */
+  .card[data-padding='md'] .card__footer,
+  .card[data-padding='lg'] .card__footer {
+    @apply -mx-4 -mb-4 mt-4;
+    @apply px-4 py-3;
+  }
+
+  .card[data-padding='sm'] .card__footer {
+    @apply -mx-3 -mb-3 mt-3;
+    @apply px-3 py-2;
+  }
+
+  .card[data-padding='none'] .card__footer {
+    @apply px-4 py-3;
+    @apply mt-0;
+  }
+
+  /* ============================================
+     CARD PARTS - Image
+     ============================================ */
+
+  .card__image {
+    @apply w-full h-auto object-cover;
+  }
+
+  /* Image no topo */
+  .card__image[data-position='top'] {
+    @apply -mt-4 -mx-4 mb-4 rounded-t-lg;
+  }
+
+  .card[data-padding='sm'] .card__image[data-position='top'] {
+    @apply -mt-3 -mx-3 mb-3;
+  }
+
+  .card[data-padding='lg'] .card__image[data-position='top'] {
+    @apply -mt-6 -mx-6 mb-6;
+  }
+
+  .card[data-padding='none'] .card__image[data-position='top'] {
+    @apply mt-0 mx-0 mb-0 rounded-t-lg rounded-b-none;
+  }
+
+  /* Image no fundo */
+  .card__image[data-position='bottom'] {
+    @apply -mb-4 -mx-4 mt-4 rounded-b-lg;
+  }
+
+  .card[data-padding='sm'] .card__image[data-position='bottom'] {
+    @apply -mb-3 -mx-3 mt-3;
+  }
+
+  .card[data-padding='lg'] .card__image[data-position='bottom'] {
+    @apply -mb-6 -mx-6 mt-6;
+  }
+
+  .card[data-padding='none'] .card__image[data-position='bottom'] {
+    @apply mb-0 mx-0 mt-0 rounded-b-lg rounded-t-none;
+  }
+}
