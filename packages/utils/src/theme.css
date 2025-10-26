@@ -1,15 +1,16 @@
+@import './components/alert.css';
+@import './components/badge.css';
 @import './components/button.css';
 @import './components/button-group.css';
-@import './components/alert.css';
-@import './components/input.css';
-@import './components/textarea.css';
-@import './components/switch.css';
-@import './components/select.css';
-@import './components/table.css';
-@import './components/modal.css';
 @import './components/form.css';
+@import './components/input.css';
+@import './components/modal.css';
 @import './components/overlay.css';
+@import './components/select.css';
+@import './components/switch.css';
 @import './components/tab.css';
+@import './components/table.css';
+@import './components/textarea.css';
 @import './components/toast.css';
 @theme {
   /* Core Colors */

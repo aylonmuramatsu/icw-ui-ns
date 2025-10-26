@@ -63,7 +63,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 ## 🟪 Feedback
 
 - [x] **Alert**
-- [ ] **Badge**
+- [x] **Badge**
 - [ ] **Chip**
 - [ ] **Progress**
 - [ ] **Skeleton**

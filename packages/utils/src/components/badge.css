@@ -1,0 +1,243 @@
+/* ============================================
+   BADGE - Base Styles
+   ============================================ */
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center gap-1.5 font-medium transition-all duration-200;
+    @apply border select-none;
+  }
+
+  /* Rounded corners */
+  .badge[data-rounded='false'] {
+    @apply rounded-lg;
+  }
+
+  .badge[data-rounded='true'] {
+    @apply rounded-full;
+  }
+
+  /* ============================================
+     SIZE VARIANTS
+     ============================================ */
+
+  .badge[data-size='xs'] {
+    @apply text-xs px-2 py-0.5 min-h-[1.25rem];
+  }
+
+  .badge[data-size='sm'] {
+    @apply text-xs px-2.5 py-1 min-h-[1.5rem];
+  }
+
+  .badge[data-size='md'] {
+    @apply text-sm px-3 py-1 min-h-[1.75rem];
+  }
+
+  .badge[data-size='lg'] {
+    @apply text-base px-4 py-1.5 min-h-[2rem];
+  }
+
+  /* ============================================
+     VARIANT: SOLID
+     ============================================ */
+
+  .badge[data-variant='solid'] {
+    @apply text-white shadow-sm;
+  }
+
+  .badge[data-variant='solid'][data-color='primary'] {
+    @apply bg-primary border-primary;
+  }
+
+  .badge[data-variant='solid'][data-color='secondary'] {
+    @apply bg-secondary border-secondary;
+  }
+
+  .badge[data-variant='solid'][data-color='danger'] {
+    @apply bg-error border-error;
+  }
+
+  .badge[data-variant='solid'][data-color='success'] {
+    @apply bg-success border-success;
+  }
+
+  .badge[data-variant='solid'][data-color='info'] {
+    @apply bg-info border-info;
+  }
+
+  .badge[data-variant='solid'][data-color='warning'] {
+    @apply bg-warning border-warning;
+  }
+
+  /* ============================================
+     VARIANT: OUTLINE
+     ============================================ */
+
+  .badge[data-variant='outline'] {
+    @apply bg-transparent border-2;
+  }
+
+  .badge[data-variant='outline'][data-color='primary'] {
+    @apply border-primary text-primary;
+  }
+
+  .badge[data-variant='outline'][data-color='secondary'] {
+    @apply border-secondary text-secondary;
+  }
+
+  .badge[data-variant='outline'][data-color='danger'] {
+    @apply border-error text-error;
+  }
+
+  .badge[data-variant='outline'][data-color='success'] {
+    @apply border-success text-success;
+  }
+
+  .badge[data-variant='outline'][data-color='info'] {
+    @apply border-info text-info;
+  }
+
+  .badge[data-variant='outline'][data-color='warning'] {
+    @apply border-warning text-warning;
+  }
+
+  /* ============================================
+     VARIANT: SOFT
+     ============================================ */
+
+  .badge[data-variant='soft'] {
+    @apply border-transparent;
+  }
+
+  .badge[data-variant='soft'][data-color='primary'] {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .badge[data-variant='soft'][data-color='secondary'] {
+    @apply bg-secondary/10 text-secondary;
+  }
+
+  .badge[data-variant='soft'][data-color='danger'] {
+    @apply bg-error/10 text-error;
+  }
+
+  .badge[data-variant='soft'][data-color='success'] {
+    @apply bg-success/10 text-success;
+  }
+
+  .badge[data-variant='soft'][data-color='info'] {
+    @apply bg-info/10 text-info;
+  }
+
+  .badge[data-variant='soft'][data-color='warning'] {
+    @apply bg-warning/10 text-warning;
+  }
+
+  /* ============================================
+     BADGE PARTS - Dot
+     ============================================ */
+
+  .badge__dot {
+    @apply size-2 rounded-full shrink-0;
+  }
+
+  /* Dot colors - sempre com cor sólida */
+  .badge__dot[data-color='primary'] {
+    @apply bg-primary;
+  }
+
+  .badge__dot[data-color='secondary'] {
+    @apply bg-secondary;
+  }
+
+  .badge__dot[data-color='danger'] {
+    @apply bg-error;
+  }
+
+  .badge__dot[data-color='success'] {
+    @apply bg-success;
+  }
+
+  .badge__dot[data-color='info'] {
+    @apply bg-info;
+  }
+
+  .badge__dot[data-color='warning'] {
+    @apply bg-warning;
+  }
+
+  /* Dot na variante solid - fica branco para contrastar */
+  .badge[data-variant='solid'] .badge__dot {
+    @apply bg-white shadow-sm;
+  }
+
+  /* ============================================
+     BADGE PARTS - Icon
+     ============================================ */
+
+  .badge__icon {
+    @apply inline-flex items-center justify-center shrink-0;
+  }
+
+  .badge[data-size='xs'] .badge__icon {
+    @apply size-3;
+  }
+
+  .badge[data-size='sm'] .badge__icon {
+    @apply size-3.5;
+  }
+
+  .badge[data-size='md'] .badge__icon {
+    @apply size-4;
+  }
+
+  .badge[data-size='lg'] .badge__icon {
+    @apply size-5;
+  }
+
+  /* ============================================
+     BADGE PARTS - Content
+     ============================================ */
+
+  .badge__content {
+    @apply inline-flex items-center;
+  }
+
+  /* ============================================
+     BADGE PARTS - Remove Button
+     ============================================ */
+
+  .badge__remove {
+    @apply inline-flex items-center justify-center shrink-0;
+    @apply rounded-full transition-all duration-200;
+    @apply hover:bg-black/10 active:bg-black/20;
+    @apply -mr-1;
+  }
+
+  .badge[data-size='xs'] .badge__remove {
+    @apply size-4 p-0.5;
+  }
+
+  .badge[data-size='sm'] .badge__remove {
+    @apply size-4 p-0.5;
+  }
+
+  .badge[data-size='md'] .badge__remove {
+    @apply size-5 p-1;
+  }
+
+  .badge[data-size='lg'] .badge__remove {
+    @apply size-6 p-1;
+  }
+
+  /* Remove button hover for solid variant */
+  .badge[data-variant='solid'] .badge__remove {
+    @apply hover:bg-white/20 active:bg-white/30;
+  }
+
+  /* Remove button hover for outline/soft variants */
+  .badge[data-variant='outline'] .badge__remove,
+  .badge[data-variant='soft'] .badge__remove {
+    @apply hover:bg-current/10 active:bg-current/20;
+  }
+}
