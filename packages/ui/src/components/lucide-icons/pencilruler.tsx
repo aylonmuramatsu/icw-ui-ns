@@ -1,10 +1,8 @@
 export default function PencilRuler(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context;
+  const { color = 'currentColor', class: className = '' } = context;
   
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -12,7 +10,6 @@ export default function PencilRuler(context) {
       stroke-linecap="round"
       stroke-linejoin="round"
       class={className}
-      style={{ color: color }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13" />

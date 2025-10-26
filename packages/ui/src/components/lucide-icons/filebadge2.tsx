@@ -1,10 +1,8 @@
 export default function FileBadge2(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context;
+  const { color = 'currentColor', class: className = '' } = context;
   
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -12,7 +10,6 @@ export default function FileBadge2(context) {
       stroke-linecap="round"
       stroke-linejoin="round"
       class={className}
-      style={{ color: color }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="m13.69 12.479 1.29 4.88a.5.5 0 0 1-.697.591l-1.844-.849a1 1 0 0 0-.88.001l-1.846.85a.5.5 0 0 1-.693-.593l1.29-4.88" />

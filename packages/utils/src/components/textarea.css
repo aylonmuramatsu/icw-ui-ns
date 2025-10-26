@@ -11,10 +11,18 @@
   }
 
   /* Sizes */
-  .textarea-xs { @apply text-xs py-1.5; }
-  .textarea-sm { @apply text-sm py-2; }
-  .textarea-md { @apply text-base py-2.5; }
-  .textarea-lg { @apply text-lg py-3; }
+  .textarea-xs {
+    @apply text-xs py-1.5;
+  }
+  .textarea-sm {
+    @apply text-sm py-2;
+  }
+  .textarea-md {
+    @apply text-base py-2.5;
+  }
+  .textarea-lg {
+    @apply text-lg py-3;
+  }
 
   /* States */
   .textarea-error {
@@ -22,25 +30,29 @@
   }
 
   .textarea-disabled {
-    @apply bg-muted text-text-secondary cursor-not-allowed border-border;
+    @apply bg-muted  cursor-not-allowed border-border;
   }
 
   .textarea-readonly {
-    @apply bg-surface text-text-secondary border-border;
+    @apply bg-surface  border-border;
   }
 
   /* Icon paddings */
-  .textarea-icon-left { @apply pl-10; }
-  .textarea-icon-right { @apply pr-10; }
+  .textarea-icon-left {
+    @apply pl-10;
+  }
+  .textarea-icon-right {
+    @apply pr-10;
+  }
 
   /* Addon (icons containers) */
   .textarea-addon {
     @apply absolute inset-y-0 flex items-center pointer-events-none;
   }
-  .textarea-addon-left { @apply left-0 pl-3; }
-  .textarea-addon-right { @apply right-0 pr-3; }
-
-
+  .textarea-addon-left {
+    @apply left-0 pl-3;
+  }
+  .textarea-addon-right {
+    @apply right-0 pr-3;
+  }
 }
-
-

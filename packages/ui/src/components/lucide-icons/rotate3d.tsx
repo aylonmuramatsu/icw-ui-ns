@@ -1,10 +1,8 @@
 export default function Rotate3d(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context;
+  const { color = 'currentColor', class: className = '' } = context;
   
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -12,7 +10,6 @@ export default function Rotate3d(context) {
       stroke-linecap="round"
       stroke-linejoin="round"
       class={className}
-      style={{ color: color }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M16.466 7.5C15.643 4.237 13.952 2 12 2 9.239 2 7 6.477 7 12s2.239 10 5 10c.342 0 .677-.069 1-.2" />

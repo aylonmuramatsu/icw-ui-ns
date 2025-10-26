@@ -1,10 +1,8 @@
 export default function Unlink2(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context;
+  const { color = 'currentColor', class: className = '' } = context;
   
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -12,7 +10,6 @@ export default function Unlink2(context) {
       stroke-linecap="round"
       stroke-linejoin="round"
       class={className}
-      style={{ color: color }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M15 7h2a5 5 0 0 1 0 10h-2m-6 0H7A5 5 0 0 1 7 7h2" />

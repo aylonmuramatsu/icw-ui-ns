@@ -1,10 +1,8 @@
 export default function TrainFrontTunnel(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context;
+  const { color = 'currentColor', class: className = '' } = context;
   
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -12,7 +10,6 @@ export default function TrainFrontTunnel(context) {
       stroke-linecap="round"
       stroke-linejoin="round"
       class={className}
-      style={{ color: color }}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M2 22V12a10 10 0 1 1 20 0v10" />

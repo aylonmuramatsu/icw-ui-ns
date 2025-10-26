@@ -16,23 +16,43 @@
   }
 
   .select-disabled {
-    @apply bg-muted text-text-secondary cursor-not-allowed border-border;
+    @apply bg-muted  cursor-not-allowed border-border;
   }
 
   .select-readonly {
-    @apply bg-surface text-text-secondary border-border;
+    @apply bg-surface  border-border;
+  }
+
+  /* Sizes */
+  .select-xs {
+    @apply text-xs py-1.5;
+  }
+  .select-sm {
+    @apply text-sm py-2;
+  }
+  .select-md {
+    @apply text-base py-2.5;
+  }
+  .select-lg {
+    @apply text-lg py-3;
   }
 
   /* Icon paddings */
-  .select-icon-left { @apply pl-10; }
-  .select-icon-right { @apply pr-10; }
+  .select-icon-left {
+    @apply pl-10;
+  }
+  .select-icon-right {
+    @apply pr-10;
+  }
 
   /* Addon (icons containers) */
   .select-addon {
     @apply absolute inset-y-0 flex items-center pointer-events-none;
   }
-  .select-addon-left { @apply left-0 pl-3; }
-  .select-addon-right { @apply right-0 pr-3; }
+  .select-addon-left {
+    @apply left-0 pl-3;
+  }
+  .select-addon-right {
+    @apply right-0 pr-3;
+  }
 }
-
-

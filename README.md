@@ -6,8 +6,8 @@ Bem-vindo ao **ICW UI Library**, uma biblioteca de componentes React/TypeScript 
 
 Este monorepo contém dois pacotes principais:
 
-- **`@icw/ui`** - Componentes de interface reutilizáveis
-- **`@icw/utils`** - Utilitários para Tailwind CSS e temas
+- **`@insightcreativewebs/ui`** - Componentes de interface reutilizáveis
+- **`@insightcreativewebs/utils`** - Utilitários para Tailwind CSS e temas
 
 ## ✨ Características
 
@@ -23,11 +23,11 @@ Este monorepo contém dois pacotes principais:
 ### Instalar os pacotes
 
 ```bash
-npm install @icw/ui @icw/utils
+npm install @insightcreativewebs/ui @insightcreativewebs/utils
 # ou
-pnpm add @icw/ui @icw/utils
+pnpm add @insightcreativewebs/ui @insightcreativewebs/utils
 # ou
-yarn add @icw/ui @icw/utils
+yarn add @insightcreativewebs/ui @insightcreativewebs/utils
 ```
 
 ### Configuração do Tailwind CSS
@@ -35,13 +35,13 @@ yarn add @icw/ui @icw/utils
 1. Importe o tema CSS no seu arquivo principal:
 
 ```css
-@import "@icw/utils/theme.css";
+@import "@insightcreativewebs/utils/theme.css";
 ```
 ## 📖 Uso
 
 ```tsx
-import { Button, Input, Form } from '@icw/ui';
-import '@icw/utils/theme.css';
+import { Button, Input, Form } from '@insightcreativewebs/ui';
+import '@insightcreativewebs/utils/theme.css';
 
 function App() {
   return (
@@ -92,8 +92,8 @@ pnpm lint
 ```
 monorepo/
 ├── packages/
-│   ├── ui/           # @icw/ui - Componentes
-│   └── utils/        # @icw/utils - Utilitários
+│   ├── ui/           # @insightcreativewebs/ui - Componentes
+│   └── utils/        # @insightcreativewebs/utils - Utilitários
 ├── playground/       # Aplicação de demonstração
 └── package.json      # Configuração do workspace
 ```

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack, { NullstackNode } from 'nullstack';
 
 const ui = tv({

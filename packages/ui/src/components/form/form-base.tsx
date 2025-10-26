@@ -1,9 +1,11 @@
 import Nullstack from "nullstack";
+import { twMerge } from "tw-merge";
 
 export class FormBase extends Nullstack {
-  render({ children, ...props }: any) {
+  render({ children, class: className, ...props }: any) {
     return (
-      <form novalidate {...props}>
+      // @ts-ignore
+      <form class={twMerge('form', className)} novalidate {...props}>
         {children}
       </form>
     );

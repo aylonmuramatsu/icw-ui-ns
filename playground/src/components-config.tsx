@@ -7,13 +7,45 @@ import {
   Input,
   InputMask,
   LucideIcons,
+  Modal,
+  overlay,
+  OverlayManager,
   PercentageInput,
   Select,
   Switch,
+  Table,
   TextArea,
-} from '@icw/ui';
+} from '@insightcreativewebs/ui';
+import { useRegisterOverlay } from '@insightcreativewebs/utils';
 
-import { NullstackNode } from 'nullstack';
+import Nullstack, { BaseNullstackClientContext, NullstackNode } from 'nullstack';
+
+class ModalGenerico extends Nullstack {
+
+  render({ overlay: { visible, key } }: any) {
+    return (
+      <Modal visible={visible}>
+        <Modal.Dialog>
+          <Modal.Header>Titulo</Modal.Header>
+          <Modal.Body>Corpo</Modal.Body>
+          <Modal.Footer>
+            <div class="flex flex-1 w-full justify-end">
+              <Button
+                onclick={() => {
+                  overlay.close(key)
+                }}
+              >
+                Fechar
+              </Button>
+
+            </div>
+          </Modal.Footer>
+        </Modal.Dialog>
+      </Modal>
+    )
+  }
+
+}
 
 export interface ComponentVariant {
   name: string;
@@ -208,4 +240,85 @@ export const componentsConfig: Record<string, ComponentConfig> = {
       error: ['false', 'true'],
     },
   },
+  table: {
+    name: 'Table',
+    description: 'Table',
+    icon: '🎯',
+    component: (props) => {
+      // Função simples para mascarar telefone (mock)
+      function mask(value: string, masks: string[]) {
+        // Apenas retorna o valor para exibição no playground
+        return value;
+      }
+
+      // Definição das colunas
+      const columns = {
+        id: {
+          label: '#'
+        },
+        name: {
+          label: 'Nome',
+          sort: true
+        },
+        phone: {
+          label: 'Telefone',
+          content: (value: string, row: any) => {
+            return <span>{mask(value, ['(99) 9 9999-9999', '(99) 9999-9999'])}</span>
+          }
+        }
+      };
+
+      // Geração de dados mockados baseado nas colunas
+      const data = [
+        { id: 1, name: 'João Silva', phone: '11987654321' },
+        { id: 2, name: 'Maria Souza', phone: '11912345678' },
+        { id: 3, name: 'Carlos Lima', phone: '1134567890' },
+      ];
+
+      return <Table {...props} data={data} columns={columns} />;
+    },
+    configs: {
+      compact: ['false', 'true'],
+      data: [],
+
+    },
+  },
+  overlay: {
+    name: 'Overlay',
+    description: '',
+    icon: '🎯',
+    component: (props) => {
+
+
+      // const component = new Component();
+
+      // useRegisterOverlay('@modal/common', ModalGenerico)
+
+      return <OverlayShowCase />
+    },
+    configs: {
+      compact: ['false', 'true'],
+      data: [],
+
+    },
+  },
 };
+
+class OverlayShowCase extends Nullstack {
+  modal: any = null
+  hydrate(context: BaseNullstackClientContext<unknown>) {
+    this.modal = useRegisterOverlay('@modal/common', ModalGenerico)
+  }
+  terminate(context: BaseNullstackClientContext<unknown>) {
+    this.modal.unregister();
+  }
+  render(context: BaseNullstackClientContext<unknown>): NullstackNode {
+
+    return (
+      <div>
+        <OverlayManager />
+        <Button onclick={() => overlay.show('@modal/common')} >Abrir Modal</Button>
+      </div>
+    )
+  }
+}

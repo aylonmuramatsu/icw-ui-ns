@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack from 'nullstack';
 
 const ui = tv({
@@ -42,11 +42,31 @@ const ui = tv({
         select: 'select-icon-right',
       },
     },
+    size: {
+      xs: {
+        select: 'select-xs',
+      },
+      sm: {
+        select: 'select-sm',
+      },
+      md: {
+        select: 'select-md',
+      },
+      lg: {
+        select: 'select-lg',
+      },
+    },
   },
+
+  defaultVariants: {
+    size: 'md'
+  }
+
 }) as any;
 
 export class Select extends Nullstack {
-  render({ name, styles, error, disabled, readonly, children, ...props }: any) {
+  render(context: any) {
+    const { name, styles, error, disabled, readonly, children, size, ...props } = context
     const { wrapper, select, addon } = ui();
     const isDisabled = disabled || readonly;
 
@@ -67,12 +87,13 @@ export class Select extends Nullstack {
             disabled={isDisabled}
             readonly={readonly}
             class={select({
-              className: styles?.select,
               error: !!error?.[name],
               disabled: isDisabled,
               readonly,
+              size,
               'icon-left': !!props['icon-left'],
               'icon-right': !!props['icon-right'],
+              className: styles?.select,
             })}
             {...props}
           >

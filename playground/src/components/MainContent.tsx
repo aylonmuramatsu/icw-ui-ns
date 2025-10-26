@@ -1,4 +1,5 @@
 import Nullstack from 'nullstack';
+import { FreedomTest } from '../pages/freedom-test';
 import { LucideIconsPage } from '../pages/lucide-icons';
 import { ComponentCanvas } from './ComponentCanvas';
 import { ComponentHeader } from './ComponentHeader';
@@ -16,7 +17,7 @@ export class MainContent extends Nullstack {
               {/* Content Container - escuro, destacando do header */}
               <div class="bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900 border border-border/40 rounded-2xl shadow-2xl shadow-primary/10 p-6 lg:p-8 h-full transition-colors duration-300">
                 <div class="space-y-6 h-full flex flex-col">
-                  {!['lucide-icons'].includes(selected_component) ? (
+                  {!['lucide-icons', 'freedom'].includes(selected_component) ? (
                     <>
                       {/* Header Section */}
                       <div class="flex-shrink-0">
@@ -41,6 +42,9 @@ export class MainContent extends Nullstack {
                     <>
                       {selected_component === 'lucide-icons' && (
                         <LucideIconsPage />
+                      )}
+                      {selected_component === 'freedom' && (
+                        <FreedomTest />
                       )}
                     </>
                   )}

@@ -1,6 +1,6 @@
 import Nullstack from 'nullstack';
 
-import { Button, LucideIcons } from '@icw/ui';
+import { Button, LucideIcons } from '@insightcreativewebs/ui';
 
 export class LucideIconsPage extends Nullstack {
   // Helper para copiar texto para a área de transferência

@@ -58,7 +58,7 @@ export class Button extends Nullstack {
       class: className,
       children,
       ...props
-    } = context;
+    } = context || {};
     return (
       <button
         class={buttonVariants({ variant, color, size, class: className })}

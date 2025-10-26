@@ -16,8 +16,8 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@icw/ui": ["./packages/ui/src"],
-      "@icw/utils": ["./packages/utils/src"]
+      "@insightcreativewebs/ui": ["./packages/ui/src"],
+      "@insightcreativewebs/utils": ["./packages/utils/src"]
     }
   },
   "include": ["packages/*/src/**/*", "playground/src/**/*"],

@@ -1,21 +1,22 @@
 {
-  "name": "@icw/playground",
+  "name": "@insightcreativewebs/playground",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
     "css-minimizer-webpack-plugin": "^7.0.2",
-    "nullstack": "~0.20.0",
-    "tailwindcss": "^4.1.13",
+    "nullstack": "~0.20.3",
     "postcss-loader": "^7.0.1",
-    "@tailwindcss/forms": "^0.5.10"
+    "tailwindcss": "^4.1.13"
   },
-  "dependencies":{
-    "@icw/ui": "workspace:*",
-    "@icw/utils": "workspace:*",
+  "dependencies": {
+    "@insightcreativewebs/ui": "workspace:*",
+    "@insightcreativewebs/utils": "workspace:*",
     "@tailwindcss/postcss": "^4.1.13",
-    "postcss": "^8.5.6"
+    "postcss": "^8.5.6",
+    "remask": "^1.2.2"
   },
   "scripts": {
     "start": "npx nullstack start",

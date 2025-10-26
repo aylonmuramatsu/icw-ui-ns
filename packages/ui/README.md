@@ -1,4 +1,3 @@
-
 # UI Framework Roadmap
 
 Este projeto visa ser um UI Framework completo, compondo todos os elementos essenciais para aplicações modernas, com foco em acessibilidade, composição, responsividade e integração com nosso design system.
@@ -10,13 +9,13 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 ## 🟦 Foundation
 
 - [x] **Custom Theme**
-      Fornecemos uma base no @icw/utils/theme.css, sempre devemos importar para usar! porém podemos criar um css das variantes das cores para customizar conforme a sua necessidade
+      Fornecemos uma base no @insightcreativewebs/utils/theme.css, sempre devemos importar para usar! porém podemos criar um css das variantes das cores para customizar conforme a sua necessidade
 
-- [ ] **Portal**  
-  Renderização fora da árvore principal (dropdowns, modais, tooltips).
+- [x] **Portal**  
+       Renderização fora da árvore principal (dropdowns, modais, tooltips).
 
 - [x] **tv.ts**  
-  Utilitário para tailwind-variants.
+       Utilitário para tailwind-variants.
 
 ---
 
@@ -69,7 +68,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 - [ ] **Progress**
 - [ ] **Skeleton**
 - [ ] **Spinner/Loader**
-- [ ] **Toast**
+- [x] **Toast**
 - [ ] **Tooltip**
 - [ ] **Popover**
 
@@ -77,7 +76,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 
 ## 🟥 Overlay
 
-- [ ] **Modal**
+- [x] **Modal**
 - [ ] **Drawer**
 - [ ] **Dropdown** (usando Portal, digitável, acessível)
 - [ ] **Menu** (context menu, dropdown menu)
@@ -86,7 +85,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 
 ## 🟫 Navegação
 
-- [ ] **Tabs**
+- [x] **Tabs**
 - [ ] **Accordion**
 - [ ] **Breadcrumb**
 - [ ] **Pagination**
@@ -125,4 +124,3 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 ---
 
 > **Dica:** Marque os componentes já implementados e adicione observações conforme necessário.
-

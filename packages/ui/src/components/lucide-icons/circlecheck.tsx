@@ -3,11 +3,9 @@ import Nullstack from 'nullstack'
 export default class CircleCheck extends Nullstack {
 
   render(context) {
-    const { size = 24, color = 'currentColor', class: className = '' } = context
+    const { color = 'currentColor', class: className = '' } = context;
     return (
       <svg
-        width={size}
-        height={size}
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"

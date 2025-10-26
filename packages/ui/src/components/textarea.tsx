@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack from 'nullstack';
 
 const ui = tv({

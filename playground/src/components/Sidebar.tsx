@@ -41,11 +41,10 @@ export class Sidebar extends Nullstack {
                 const isSelected = context.selected_component === key;
                 return (
                   <button
-                    class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${
-                      isSelected
-                        ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
-                        : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
-                    }`}
+                    class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${isSelected
+                      ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
+                      : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
+                      }`}
                     key={key}
                     onclick={this.change_component}
                     style="min-height: 36px;"
@@ -61,11 +60,10 @@ export class Sidebar extends Nullstack {
                       {component.icon}
                     </span>
                     <span
-                      class={`font-semibold text-xs truncate transition-all duration-300 ${
-                        isSelected
-                          ? 'text-primary'
-                          : 'text-white group-hover:text-primary'
-                      }`}
+                      class={`font-semibold text-xs truncate transition-all duration-300 ${isSelected
+                        ? 'text-primary'
+                        : 'text-white group-hover:text-primary'
+                        }`}
                       style="max-width: 120px;"
                     >
                       {component.name}
@@ -93,11 +91,10 @@ export class Sidebar extends Nullstack {
             <div class="mb-4">
               <div class="space-y-1">
                 <button
-                  class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${
-                    context.selected_component === 'lucide-icons'
-                      ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
-                      : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
-                  }`}
+                  class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${context.selected_component === 'lucide-icons'
+                    ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
+                    : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
+                    }`}
                   onclick={{ selected_component: 'lucide-icons' }}
                   source={context}
                   style="min-height: 36px;"
@@ -108,19 +105,45 @@ export class Sidebar extends Nullstack {
                   ></div>
 
                   <span
-                    class={`font-semibold text-xs truncate transition-all duration-300 ${
-                      context.selected_component === 'lucide-icons'
-                        ? 'text-primary'
-                        : 'text-white group-hover:text-primary'
-                    }`}
+                    class={`font-semibold text-xs truncate transition-all duration-300 ${context.selected_component === 'lucide-icons'
+                      ? 'text-primary'
+                      : 'text-white group-hover:text-primary'
+                      }`}
                     style="max-width: 120px;"
                   >
                     Lucide Icons
                   </span>
                 </button>
+
+                <button
+                  class={`group relative w-full text-left px-2 py-2 rounded-lg transition-all duration-300 hover:scale-[1.01] transform overflow-hidden flex items-center gap-2  ${context.selected_component === 'lucide-icons'
+                    ? 'bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 border border-primary/40 shadow-lg shadow-primary/15'
+                    : 'hover:bg-gradient-to-br hover:from-gray-800/80 hover:via-gray-800/60 hover:to-gray-800/40 border border-transparent hover:border-border/40 hover:shadow'
+                    }`}
+                  onclick={{ selected_component: 'freedom' }}
+                  source={context}
+                  style="min-height: 36px;"
+                >
+                  {/* Subtle shine effect */}
+                  <div
+                    class={`absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ${context.selected_component === 'freedom' ? 'opacity-10' : 'opacity-0 group-hover:opacity-5'}`}
+                  ></div>
+
+                  <span
+                    class={`font-semibold text-xs truncate transition-all duration-300 ${context.selected_component === 'freedom'
+                      ? 'text-primary'
+                      : 'text-white group-hover:text-primary'
+                      }`}
+                    style="max-width: 120px;"
+                  >
+                    Freedom Test
+                  </span>
+                </button>
               </div>
             </div>
           </div>
+
+
 
           {/* Footer gradient */}
           <div class="mt-auto pt-2">

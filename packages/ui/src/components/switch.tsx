@@ -1,4 +1,4 @@
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack, { NullstackClientContext } from 'nullstack';
 
 const ui = tv({

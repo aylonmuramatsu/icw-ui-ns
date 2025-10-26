@@ -1,4 +1,3 @@
-
 @import './components/button.css';
 @import './components/button-group.css';
 @import './components/alert.css';
@@ -6,31 +5,36 @@
 @import './components/textarea.css';
 @import './components/switch.css';
 @import './components/select.css';
-
+@import './components/table.css';
+@import './components/modal.css';
+@import './components/form.css';
+@import './components/overlay.css';
+@import './components/tab.css';
+@import './components/toast.css';
 @theme {
   /* Core Colors */
+  --color-default: #94a3b8;
   --color-primary: #1eb7e1;
   --color-secondary: #bb3e26;
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
-  
+
   /* Neutral Colors */
   --color-background: #ffffff;
   --color-surface: #f8fafc;
   --color-muted: #f1f5f9;
   --color-border: #e2e8f0;
-  
-  /* Text Colors */
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-foreground: var(--color-text-primary);
 
-  
+  /* Text Colors */
+
+  --color-text-muted: #94a3b8;
+  --color-foreground: #0f172a;
+
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

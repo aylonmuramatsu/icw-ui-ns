@@ -1,8 +1,8 @@
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack, { NullstackNode } from 'nullstack';
 
 const styles = tv({
-  base: 'block caption font-medium text-gray-700 mb-2',
+  base: 'form-label',
   variants: {},
 });
 export class FormLabel extends Nullstack {

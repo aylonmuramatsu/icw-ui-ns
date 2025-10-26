@@ -1,0 +1,44 @@
+.tab-header {
+  @apply flex flex-row items-center  justify-around gap-0.5 bg-slate-300 rounded-lg  w-auto p-[3px];
+}
+
+.tab-header.tab-header-pill {
+  @apply rounded-full overflow-hidden;
+}
+
+.tab-content {
+  @apply p-4 w-full hidden;
+}
+.tab-content.active {
+  @apply flex;
+}
+
+.tab-button {
+  @apply bg-transparent text-black rounded-md w-auto inline-flex grow shrink px-4 py-1.5 flex-nowrap whitespace-nowrap;
+  @apply gap-1.5 border border-transparent text-sm font-medium transition-[color,box-shadow];
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+  @apply cursor-pointer;
+}
+.tab-button.tab-button-pill {
+  @apply rounded-full;
+}
+
+.tab-button-xs {
+  @apply px-2 py-0.5;
+}
+.tab-button-sm {
+  @apply px-2.5 py-1.5;
+}
+.tab-button-md {
+  @apply px-2.5 py-2.5;
+}
+.tab-button-lg {
+  @apply px-4 py-3.5;
+}
+.tab-button.active {
+  @apply bg-white shadow-md;
+}
+
+.tabs {
+  @apply flex flex-col grow-0 shrink-0 items-start w-auto;
+}

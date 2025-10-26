@@ -1,4 +1,4 @@
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack from 'nullstack';
 import { mask, unmask } from 'remask';
 
@@ -74,25 +74,30 @@ export class InputMask extends Nullstack {
     ...context
   }) {
     const original_value = event.target.value || '';
-    const unmasked_value = unmask(mask(original_value, mask_value));
+    const unmasked_value = unmask(original_value);
+
+
     const masked_value = this.applyMask({
-      value: original_value,
+      value: unmasked_value,
       mask: mask_value,
     });
 
     //   // ...context,
-    event.target.value = masked_value;
+
     if (bind) bind.object[bind.property] = unmasked_value;
-    oninput({
+    oninput && oninput({
       ...context,
       value: unmasked_value,
       masked: masked_value,
       unmasked,
       event,
     });
+    event.target.value = masked_value
+
+
   }
 
-  applyMask({ value, mask: mask_value }) {
+  applyMask({ value, mask: mask_value = '' }) {
     const formatted = mask(value || '', mask_value);
     return formatted;
   }
@@ -105,9 +110,10 @@ export class InputMask extends Nullstack {
     readonly,
     oninput,
     onclick,
+    size,
     ...props
   }: any) {
-    const { wrapper, input, addon } = ui();
+    const { wrapper, input, addon, onblur } = ui();
     const isDisabled = disabled || readonly;
     return (
       <>
@@ -133,12 +139,14 @@ export class InputMask extends Nullstack {
               error: !!error?.[name],
               disabled: isDisabled,
               readonly: readonly,
+              size,
               'icon-left': !!props['icon-left'],
               'icon-right': !!props['icon-right'],
             })}
             default
             onclick={onclick}
             oninput={this.parse}
+            onblur={onblur}
           />
         </div>
       </>

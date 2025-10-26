@@ -1,8 +1,8 @@
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack from 'nullstack';
 
 const styles = tv({
-  base: '',
+  base: 'form-group',
 });
 export class FormGroup extends Nullstack {
   render({ children, class: className, ...props }: any) {

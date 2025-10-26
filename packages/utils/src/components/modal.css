@@ -1,0 +1,41 @@
+@layer components {
+  .modal-header {
+    @apply text-black/80 text-2xl border-b-2 p-4 font-semibold;
+  }
+
+  .modal-body {
+    @apply p-4 outline-0;
+  }
+
+  .modal-footer {
+    @apply p-4 border-t-2;
+
+    div {
+      @apply flex flex-1 gap-2 items-center justify-end;
+    }
+  }
+
+  .modal {
+    /* @apply bg-white shadow-md rounded-xl border-2 border-gray-300 fixed w-full max-w-lg pointer-events-none opacity-0 transition-all top-0 left-auto right-auto;  */
+    @apply fixed opacity-100 inset-0 z-30 outline-0  invisible pointer-events-none;
+
+    &.open {
+      @apply overflow-x-hidden overflow-y-auto visible pointer-events-auto;
+
+      .modal-dialog {
+        @apply opacity-100 transition-all duration-300;
+      }
+    }
+
+    &.fade {
+      transition: opacity 0.15s linear;
+    }
+    &.fade-in {
+      opacity: 1;
+    }
+  }
+
+  .modal-dialog {
+    @apply max-w-lg rounded-xl border-2 border-gray-300 shadow mx-auto mt-8 bg-white transition-all opacity-0 duration-300 text-black;
+  }
+}

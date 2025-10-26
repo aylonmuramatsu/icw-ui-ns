@@ -1,0 +1,175 @@
+.toaster {
+  @apply fixed inset-0 flex flex-col gap-4 p-4 pointer-events-none z-[9999];
+}
+
+/* Posições do Toaster */
+.toaster[data-position='top-right'] {
+  @apply justify-start items-end;
+}
+
+.toaster[data-position='top-left'] {
+  @apply justify-start items-start;
+}
+
+.toaster[data-position='top-center'] {
+  @apply justify-start items-center;
+}
+
+.toaster[data-position='bottom-right'] {
+  @apply justify-end items-end;
+}
+
+.toaster[data-position='bottom-left'] {
+  @apply justify-end items-start;
+}
+
+.toaster[data-position='bottom-center'] {
+  @apply justify-end items-center;
+}
+
+/* ============================================
+   TOAST - Item Individual
+   ============================================ */
+
+.toast {
+  @apply transform transition-all duration-100 ease-out;
+  @apply pointer-events-auto max-w-sm w-full;
+  @apply relative overflow-hidden;
+  @apply rounded-2xl shadow-xl border bg-white;
+  @apply hover:shadow-2xl hover:scale-[1.02] hover:-translate-y-1;
+}
+
+/* Animações de entrada/saída */
+.toast[data-state='open'] {
+  @apply translate-x-0 opacity-100 scale-100;
+}
+
+.toast[data-state='closed'] {
+  @apply translate-x-full opacity-0 scale-95;
+}
+
+/* Variantes de tipo */
+.toast[data-type='success'] {
+  @apply border-green-400 bg-green-50/90 shadow-green-500/20;
+}
+
+.toast[data-type='error'] {
+  @apply border-red-400 bg-red-50/90 shadow-red-500/20;
+}
+
+.toast[data-type='warning'] {
+  @apply border-amber-400 bg-amber-50/90 shadow-amber-500/20;
+}
+
+.toast[data-type='info'] {
+  @apply border-blue-400 bg-blue-50/90 shadow-blue-500/20;
+}
+
+/* ============================================
+   TOAST PARTS - Partes do Toast
+   ============================================ */
+
+.toast__content {
+  @apply flex p-5 w-full items-center gap-4;
+}
+
+.toast__icon {
+  @apply size-11 p-2 rounded-xl flex items-center justify-center;
+  @apply shadow-lg transition-transform duration-300;
+  @apply group-hover:scale-105;
+}
+
+.toast__icon[data-type='success'] {
+  @apply text-white bg-green-500;
+}
+
+.toast__icon[data-type='error'] {
+  @apply text-white bg-red-500;
+}
+
+.toast__icon[data-type='warning'] {
+  @apply text-white bg-amber-500;
+}
+
+.toast__icon[data-type='info'] {
+  @apply text-white bg-blue-500;
+}
+
+.toast__body {
+  @apply flex-1 min-w-0 relative;
+}
+
+.toast__title {
+  @apply font-semibold mb-1;
+}
+
+.toast__title[data-type='success'] {
+  @apply text-green-900;
+}
+
+.toast__title[data-type='error'] {
+  @apply text-red-900;
+}
+
+.toast__title[data-type='warning'] {
+  @apply text-amber-900;
+}
+
+.toast__title[data-type='info'] {
+  @apply text-blue-900;
+}
+
+.toast__description {
+  @apply text-sm font-medium leading-relaxed text-gray-700;
+}
+
+.toast__close {
+  @apply shrink-0 size-8 rounded-lg flex items-center justify-center;
+  @apply transition-all duration-200 hover:scale-110;
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-700;
+}
+
+.toast__close[data-type='success'] {
+  @apply hover:bg-green-100 hover:text-green-700;
+}
+
+.toast__close[data-type='error'] {
+  @apply hover:bg-red-100 hover:text-red-700;
+}
+
+.toast__close[data-type='warning'] {
+  @apply hover:bg-amber-100 hover:text-amber-700;
+}
+
+.toast__close[data-type='info'] {
+  @apply hover:bg-blue-100 hover:text-blue-700;
+}
+
+/* ============================================
+   TOAST PROGRESS - Barra de Progresso
+   ============================================ */
+
+.toast__progress-container {
+  @apply absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl overflow-hidden;
+  @apply bg-black/5;
+}
+
+.toast__progress-bar {
+  @apply h-full transition-all duration-100 ease-linear rounded-b-2xl;
+}
+
+.toast__progress-bar[data-type='success'] {
+  @apply bg-green-400;
+}
+
+.toast__progress-bar[data-type='error'] {
+  @apply bg-red-400;
+}
+
+.toast__progress-bar[data-type='warning'] {
+  @apply bg-amber-400;
+}
+
+.toast__progress-bar[data-type='info'] {
+  @apply bg-blue-400;
+}

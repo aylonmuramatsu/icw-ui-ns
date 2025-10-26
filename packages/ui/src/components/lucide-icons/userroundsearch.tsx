@@ -1,10 +1,8 @@
 export default function UserRoundSearch(context) {
-  const { size = 24, color = 'currentColor', class: className = '' } = context
+  const { color = 'currentColor', class: className = '' } = context;
 
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"

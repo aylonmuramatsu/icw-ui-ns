@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { tv } from '@icw/utils';
+import { tv } from '@insightcreativewebs/utils';
 import Nullstack from 'nullstack';
 
 const ui = tv({
@@ -217,7 +217,6 @@ export class PercentageInput extends Nullstack {
           default
           onkeydown={this.onKeyDown}
           oninput={this.parse}
-          {...props}
         />
       </div>
     );
