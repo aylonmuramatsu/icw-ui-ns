@@ -1,3 +1,4 @@
+export { Accordion, AccordionItem } from './components/accordion';
 export { Alert } from './components/alert';
 export { Avatar, AvatarGroup } from './components/avatar';
 export { Badge } from './components/badge';

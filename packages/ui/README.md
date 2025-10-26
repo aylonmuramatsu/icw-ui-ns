@@ -85,7 +85,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 ## 🟫 Navegação
 
 - [x] **Tabs**
-- [ ] **Accordion**
+- [x] **Accordion**
 - [ ] **Breadcrumb**
 - [ ] **Pagination**
 - [ ] **Stepper**

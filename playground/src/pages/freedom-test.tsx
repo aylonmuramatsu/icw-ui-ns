@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup, Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Skeleton, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
+import { Accordion, AccordionItem, Avatar, AvatarGroup, Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Skeleton, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
 
 
 export const FreedomTest = () => {
@@ -1334,6 +1334,237 @@ export const FreedomTest = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
+            ACCORDION COMPONENT
+            ============================================ */}
+        <section class="space-y-6">
+          <div class="border-b pb-2">
+            <h2 class="text-2xl font-bold">Accordion Component</h2>
+            <p class="text-sm text-gray-600">
+              Expandable panels with smooth animations
+            </p>
+          </div>
+
+          {/* Basic Accordion - Single Mode */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Basic Accordion (Single Mode)</h3>
+            <p class="text-sm text-gray-600">Only one item can be open at a time</p>
+
+            <Accordion type="single" defaultOpen={['item-1']}>
+              <AccordionItem id="item-1" title="What is Nullstack?">
+                Nullstack is a full-stack JavaScript framework for building modern web applications. It allows you to write both frontend and backend code in a single component.
+              </AccordionItem>
+
+              <AccordionItem id="item-2" title="How does it work?">
+                Nullstack uses a unique approach where server functions and client functions coexist in the same component file. The framework automatically handles the communication between them.
+              </AccordionItem>
+
+              <AccordionItem id="item-3" title="Why use Nullstack?">
+                Nullstack eliminates the need for separate frontend and backend projects, reduces boilerplate code, and provides a seamless development experience with automatic hydration and SSR.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Multiple Mode */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Multiple Mode</h3>
+            <p class="text-sm text-gray-600">Multiple items can be open simultaneously</p>
+
+            <Accordion type="multiple" defaultOpen={['faq-1', 'faq-2']}>
+              <AccordionItem id="faq-1" title="Is it free?">
+                Yes, Nullstack is 100% free and open source under the MIT license. You can use it for personal and commercial projects without any restrictions.
+              </AccordionItem>
+
+              <AccordionItem id="faq-2" title="Does it support TypeScript?">
+                Yes, Nullstack has excellent TypeScript support with full type definitions and inference.
+              </AccordionItem>
+
+              <AccordionItem id="faq-3" title="Can I use it with existing APIs?">
+                Absolutely! Nullstack can consume any REST or GraphQL API, and you can also build your own API endpoints within the framework.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* With Icons */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">With Custom Icons</h3>
+            <p class="text-sm text-gray-600">Add icons to make items more recognizable</p>
+
+            <Accordion type="single">
+              <AccordionItem
+                id="feature-1"
+                title="Server-Side Rendering"
+                icon={<LucideIcons.Server size={18} />}
+              >
+                Built-in SSR support with automatic hydration. Your pages are SEO-friendly by default and load instantly.
+              </AccordionItem>
+
+              <AccordionItem
+                id="feature-2"
+                title="Full-Stack Components"
+                icon={<LucideIcons.Component size={18} />}
+              >
+                Write both client and server logic in the same component file. No need for separate API routes or state management libraries.
+              </AccordionItem>
+
+              <AccordionItem
+                id="feature-3"
+                title="Zero Config"
+                icon={<LucideIcons.Zap size={18} />}
+              >
+                Start building immediately without complex configuration. Hot reload, production builds, and deployment are handled for you.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Disabled Items */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">With Disabled Items</h3>
+            <p class="text-sm text-gray-600">Some items can be disabled</p>
+
+            <Accordion type="single">
+              <AccordionItem
+                id="plan-1"
+                title="Free Plan"
+                icon={<LucideIcons.Gift size={18} />}
+              >
+                Perfect for personal projects and getting started. Includes all core features with reasonable limits.
+              </AccordionItem>
+
+              <AccordionItem
+                id="plan-2"
+                title="Pro Plan"
+                icon={<LucideIcons.Crown size={18} />}
+              >
+                For professional developers and small teams. Unlimited projects, priority support, and advanced features.
+              </AccordionItem>
+
+              <AccordionItem
+                id="plan-3"
+                title="Enterprise Plan (Coming Soon)"
+                icon={<LucideIcons.Building2 size={18} />}
+                disabled={true}
+              >
+                Custom solutions for large organizations. Contact us for more information.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Bordered Variant */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Bordered Variant</h3>
+            <p class="text-sm text-gray-600">Compact look with a single border</p>
+
+            <Accordion type="single" class="accordion--bordered">
+              <AccordionItem id="section-1" title="Section 1">
+                This is the content of section 1. It contains important information.
+              </AccordionItem>
+
+              <AccordionItem id="section-2" title="Section 2">
+                This is the content of section 2. It contains more details.
+              </AccordionItem>
+
+              <AccordionItem id="section-3" title="Section 3">
+                This is the content of section 3. It wraps everything up.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Ghost Variant */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Ghost Variant</h3>
+            <p class="text-sm text-gray-600">Minimal look without borders</p>
+
+            <Accordion type="multiple" class="accordion--ghost">
+              <AccordionItem id="tip-1" title="💡 Tip #1: Use Server Functions">
+                Server functions in Nullstack run only on the server, giving you secure database access and API calls without exposing credentials.
+              </AccordionItem>
+
+              <AccordionItem id="tip-2" title="💡 Tip #2: Leverage Context">
+                Nullstack's context is automatically shared between client and server, making data flow seamless.
+              </AccordionItem>
+
+              <AccordionItem id="tip-3" title="💡 Tip #3: Component Lifecycle">
+                Use initiate() for initialization, prepare() for SSR data fetching, and hydrate() for client-side setup.
+              </AccordionItem>
+            </Accordion>
+          </div>
+
+          {/* Real-World Example: Settings Panel */}
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold">Real-World Example: Settings Panel</h3>
+            <p class="text-sm text-gray-600">Common use case in dashboards</p>
+
+            <div class="border rounded-lg p-6 bg-white">
+              <h4 class="text-lg font-semibold mb-4">Account Settings</h4>
+
+              <Accordion type="single">
+                <AccordionItem
+                  id="profile"
+                  title="Profile Information"
+                  icon={<LucideIcons.User size={18} />}
+                >
+                  <div class="space-y-3">
+                    <div>
+                      <label class="text-sm font-medium">Display Name</label>
+                      <Input placeholder="John Doe" class="mt-1" />
+                    </div>
+                    <div>
+                      <label class="text-sm font-medium">Email</label>
+                      <Input type="email" placeholder="john@example.com" class="mt-1" />
+                    </div>
+                    <Button size="sm">Save Changes</Button>
+                  </div>
+                </AccordionItem>
+
+                <AccordionItem
+                  id="security"
+                  title="Security & Privacy"
+                  icon={<LucideIcons.Shield size={18} />}
+                >
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-sm font-medium">Two-Factor Authentication</div>
+                        <div class="text-xs text-gray-500">Add an extra layer of security</div>
+                      </div>
+                      <Badge color="success" size="sm">Active</Badge>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-sm font-medium">Login Notifications</div>
+                        <div class="text-xs text-gray-500">Get notified of new logins</div>
+                      </div>
+                      <Button size="sm" variant="outline">Configure</Button>
+                    </div>
+                  </div>
+                </AccordionItem>
+
+                <AccordionItem
+                  id="notifications"
+                  title="Notifications"
+                  icon={<LucideIcons.Bell size={18} />}
+                >
+                  <div class="space-y-3">
+                    <label class="flex items-center justify-between cursor-pointer">
+                      <span class="text-sm">Email Notifications</span>
+                      <input type="checkbox" checked class="form-checkbox" />
+                    </label>
+                    <label class="flex items-center justify-between cursor-pointer">
+                      <span class="text-sm">Push Notifications</span>
+                      <input type="checkbox" class="form-checkbox" />
+                    </label>
+                    <label class="flex items-center justify-between cursor-pointer">
+                      <span class="text-sm">SMS Notifications</span>
+                      <input type="checkbox" class="form-checkbox" />
+                    </label>
+                  </div>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </section>

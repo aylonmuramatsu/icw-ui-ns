@@ -1,0 +1,34 @@
+{
+  "rules": [
+    {
+      "description": "Regras para projetos Nullstack.app — siga estritamente as convenções oficiais do framework.",
+      "patterns": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", "**/*.njs"],
+      "prompts": [
+        "Você está trabalhando em um projeto Nullstack.",
+        "Nunca use hooks do React (useState, useEffect, useMemo, etc). Nullstack não usa React.",
+        "Nunca importe React. Não adicione 'import React from ...' em lugar nenhum.",
+        "Cada componente Nullstack é uma classe que estende Nullstack, e possui métodos assíncronos (prepare, hydrate, render, etc) conforme necessário.",
+        "O método principal de renderização deve se chamar 'render'.",
+        "Use propriedades de contexto (ctx) para acessar dados, parâmetros, session, state e etc.",
+        "O estado deve ser mantido diretamente na instância da classe (ex: this.count = 0).",
+        "Use o método 'update' para reagir a mudanças no estado, se necessário.",
+        "Prefira sintaxe declarativa e direta, sem abstrações de terceiros.",
+        "Evite dependências externas quando o Nullstack já fornece uma solução nativa.",
+        "Evite componentes funcionais. Nullstack utiliza classes e métodos.",
+        "Evite uso de JSX avançado do React (como fragments ou providers); use apenas o que Nullstack suporta.",
+        "Sempre use '<Head>' para manipular metadados e SEO.",
+        "Para rotas, use o sistema de pastas 'src/pages' do Nullstack. Não crie roteadores manuais.",
+        "Quando precisar manipular ciclo de vida, use prepare() e hydrate() no lugar de useEffect.",
+        "Evite 'window', 'document' e 'localStorage' diretamente. Use 'ctx.client' e 'ctx.environment'.",
+        "Quando gerar código de UI, siga os padrões do Tailwind CSS se estiver configurado.",
+        "Siga a filosofia 'full-stack in one file' quando fizer sentido — backend e frontend no mesmo componente, usando métodos async server-side.",
+        "Precisa lembrar que sempre que criamos uma funçao dentro do componente nullstack ele vai receber por baixo dos panos o context, então tem que se atentar de sempre pegar o que precisa do param context ou fazer destruct da variavel que funciona, isso é importantissimo!",
+        "Siga o padrão de nomes: componentes com inicial maiúscula, métodos e variáveis com camelCase.",
+        "Não use 'default export function', sempre 'export default class NomeDoComponente extends Nullstack'.",
+        "Quando escrever JavaScript/TypeScript, mantenha compatibilidade ESM (sem require).",
+        "Se o projeto possuir Nullstack Context, siga o padrão de uso via 'ctx' passado nos métodos render e prepare.",
+        "Estamos utilizando tailwind v4 então sempre se atente a isso"
+      ]
+    }
+  ]
+}

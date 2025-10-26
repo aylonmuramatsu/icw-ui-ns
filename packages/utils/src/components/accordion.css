@@ -1,0 +1,139 @@
+/* ============================================
+   ACCORDION - Base Styles
+   ============================================ */
+
+@layer components {
+  .accordion {
+    @apply w-full space-y-2;
+  }
+
+  /* ============================================
+     ACCORDION ITEM
+     ============================================ */
+
+  .accordion-item {
+    @apply border border-gray-200 rounded-lg overflow-hidden;
+    @apply transition-all duration-200;
+  }
+
+  .accordion-item:hover:not(.accordion-item--disabled) {
+    @apply border-gray-300;
+  }
+
+  /* Disabled state */
+  .accordion-item--disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* Open state */
+  .accordion-item[data-state='open'] {
+    @apply border-primary/30 bg-primary/5;
+  }
+
+  /* ============================================
+     ACCORDION ITEM - Trigger (Header)
+     ============================================ */
+
+  .accordion-item__trigger {
+    @apply w-full flex items-center justify-between;
+    @apply px-4 py-3 text-left;
+    @apply font-medium text-gray-900;
+    @apply transition-all duration-200;
+    @apply hover:bg-gray-50;
+  }
+
+  .accordion-item--disabled .accordion-item__trigger {
+    @apply cursor-not-allowed hover:bg-transparent;
+  }
+
+  .accordion-item[data-state='open'] .accordion-item__trigger {
+    @apply bg-primary/5;
+  }
+
+  .accordion-item__trigger:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-inset;
+  }
+
+  /* ============================================
+     ACCORDION ITEM - Title
+     ============================================ */
+
+  .accordion-item__title {
+    @apply flex items-center gap-2 flex-1;
+  }
+
+  .accordion-item__icon {
+    @apply flex items-center justify-center shrink-0 size-5;
+    @apply text-gray-600;
+  }
+
+  /* ============================================
+     ACCORDION ITEM - Chevron
+     ============================================ */
+
+  .accordion-item__chevron {
+    @apply shrink-0 transition-transform duration-200;
+    @apply text-gray-500;
+  }
+
+  .accordion-item[data-state='open'] .accordion-item__chevron {
+    @apply rotate-180;
+  }
+
+  /* ============================================
+     ACCORDION ITEM - Content
+     ============================================ */
+
+  .accordion-item__content {
+    @apply overflow-hidden transition-all duration-300 ease-in-out;
+    max-height: 0;
+  }
+
+  .accordion-item[data-state='open'] .accordion-item__content {
+    max-height: 1000px;
+  }
+
+  .accordion-item__body {
+    @apply px-4 pb-4 pt-2;
+    @apply text-gray-700 text-sm leading-relaxed;
+  }
+
+  /* ============================================
+     ACCORDION VARIANTS
+     ============================================ */
+
+  /* Compact variant */
+  .accordion--compact .accordion-item {
+    @apply space-y-0;
+  }
+
+  .accordion--compact .accordion-item__trigger {
+    @apply py-2;
+  }
+
+  .accordion--compact .accordion-item__body {
+    @apply px-4 pb-2 pt-1;
+  }
+
+  /* Bordered variant */
+  .accordion--bordered {
+    @apply border border-gray-200 rounded-lg overflow-hidden space-y-0;
+  }
+
+  .accordion--bordered .accordion-item {
+    @apply border-0 border-b border-gray-200 rounded-none;
+  }
+
+  .accordion--bordered .accordion-item:last-child {
+    @apply border-b-0;
+  }
+
+  /* Ghost variant (no borders) */
+  .accordion--ghost .accordion-item {
+    @apply border-0 shadow-none;
+  }
+
+  .accordion--ghost .accordion-item:hover:not(.accordion-item--disabled) {
+    @apply bg-gray-50;
+  }
+}
