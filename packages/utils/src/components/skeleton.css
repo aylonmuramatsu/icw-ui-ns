@@ -1,0 +1,155 @@
+/* ============================================
+   SKELETON - Base Styles
+   ============================================ */
+
+@layer components {
+  /* Base skeleton class */
+  .sk-base {
+    @apply bg-gray-200 relative overflow-hidden block;
+  }
+
+  .sk-group {
+    @apply w-full block;
+  }
+
+  /* ============================================
+     SHAPE VARIANTS
+     ============================================ */
+
+  .sk-base[data-shape='rectangle'] {
+    @apply w-full;
+  }
+
+  .sk-base[data-shape='rectangle'][data-rounded='false'] {
+    @apply rounded;
+  }
+
+  .sk-base[data-shape='rectangle'][data-rounded='true'] {
+    @apply rounded-xl;
+  }
+
+  .sk-base[data-shape='circle'] {
+    @apply rounded-full shrink-0;
+  }
+
+  .sk-base[data-shape='text'] {
+    @apply rounded h-4;
+  }
+
+  /* Default heights for shapes */
+  .sk-base[data-shape='rectangle']:not([style*='height']) {
+    @apply h-24;
+  }
+
+  .sk-base[data-shape='circle']:not([style*='width']):not([style*='height']) {
+    @apply size-12;
+  }
+
+  /* ============================================
+     ANIMATION VARIANTS
+     ============================================ */
+
+  /* Default animation - shimmer/wave */
+  @keyframes skeleton-shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .sk-base[data-animated='true'][data-variant='default']::after,
+  .sk-base[data-animated='true'][data-variant='wave']::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+
+  /* Pulse animation */
+  @keyframes skeleton-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .sk-base[data-animated='true'][data-variant='pulse'] {
+    animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Wave animation - mais rápido */
+  .sk-base[data-animated='true'][data-variant='wave']::after {
+    animation: skeleton-shimmer 1s ease-in-out infinite;
+  }
+
+  /* ============================================
+     COMMON PATTERNS - Helper Classes
+     ============================================ */
+
+  /* Avatar skeleton - helper classes */
+  .sk-avatar {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-12;
+  }
+
+  .sk-avatar-xs {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-6;
+  }
+
+  .sk-avatar-sm {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-8;
+  }
+
+  .sk-avatar-md {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-12;
+  }
+
+  .sk-avatar-lg {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-16;
+  }
+
+  .sk-avatar-xl {
+    @apply bg-gray-200 relative overflow-hidden rounded-full shrink-0 size-24;
+  }
+
+  /* Button skeleton */
+  .sk-button {
+    @apply bg-gray-200 relative overflow-hidden rounded-lg h-10 w-24;
+  }
+
+  /* Card skeleton */
+  .sk-card {
+    @apply bg-gray-200 relative overflow-hidden rounded-xl h-48;
+  }
+
+  /* Text line skeleton */
+  .sk-text {
+    @apply bg-gray-200 relative overflow-hidden rounded h-4 mb-2;
+  }
+
+  .sk-text-sm {
+    @apply bg-gray-200 relative overflow-hidden rounded h-3 mb-2;
+  }
+
+  .sk-text-lg {
+    @apply bg-gray-200 relative overflow-hidden rounded h-5 mb-2;
+  }
+
+  /* Disable animation */
+  .sk-base[data-animated='false']::after {
+    display: none;
+  }
+
+  .sk-base[data-animated='false'] {
+    animation: none;
+  }
+}

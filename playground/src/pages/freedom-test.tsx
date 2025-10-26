@@ -1,4 +1,4 @@
-import { Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
+import { Badge, Button, Chip, Form, Input, InputMask, LucideIcons, Progress, Select, Skeleton, Tabs, Toaster, toaster } from "@insightcreativewebs/ui";
 
 
 export const FreedomTest = () => {
@@ -754,6 +754,230 @@ export const FreedomTest = () => {
                 <span class="text-sm font-medium">Processing your request...</span>
               </div>
               <Progress indeterminate={true} color="primary" size="md" />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Skeleton Examples */}
+      <div class="mt-8 space-y-8 bg-white p-6 rounded-lg">
+        <h2 class="text-2xl font-bold mb-6">Skeleton Component Examples</h2>
+
+        {/* Basic Skeletons */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Basic Shapes</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Rectangle:</p>
+              <Skeleton />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Circle:</p>
+              <Skeleton circle={true} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Text (single line):</p>
+              <Skeleton shape="text" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Text (multiple lines):</p>
+              <Skeleton shape="text" count={3} />
+            </div>
+          </div>
+        </section>
+
+        {/* Variants */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Animation Variants</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Default (shimmer):</p>
+              <Skeleton variant="default" height={60} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Wave (fast shimmer):</p>
+              <Skeleton variant="wave" height={60} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Pulse:</p>
+              <Skeleton variant="pulse" height={60} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">No animation:</p>
+              <Skeleton animated={false} height={60} />
+            </div>
+          </div>
+        </section>
+
+        {/* Custom Sizes */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Custom Sizes</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Custom width & height:</p>
+              <Skeleton width={200} height={40} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Full width, custom height:</p>
+              <Skeleton height={100} />
+            </div>
+            <div>
+              <p class="text-sm text-gray-600 mb-2">Circles with sizes:</p>
+              <div class="flex gap-4 items-center">
+                <Skeleton circle={true} width={32} height={32} />
+                <Skeleton circle={true} width={48} height={48} />
+                <Skeleton circle={true} width={64} height={64} />
+                <Skeleton circle={true} width={96} height={96} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rounded */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Rounded Corners</h3>
+          <div class="space-y-3">
+            <Skeleton rounded={false} height={60} />
+            <Skeleton rounded={true} height={60} />
+          </div>
+        </section>
+
+        {/* Practical Use Cases */}
+        <section>
+          <h3 class="text-lg font-semibold mb-4">Practical Use Cases</h3>
+
+          <div class="space-y-6">
+            {/* User Card Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">User Card Loading</h4>
+              <div class="flex items-center gap-4">
+                <Skeleton circle={true} width={64} height={64} />
+                <div class="flex-1">
+                  <Skeleton shape="text" width="60%" class="mb-2" />
+                  <Skeleton shape="text" width="40%" />
+                </div>
+              </div>
+            </div>
+
+            {/* Post Card Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Post Card Loading</h4>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <Skeleton circle={true} width={40} height={40} />
+                  <div class="flex-1">
+                    <Skeleton shape="text" width="30%" />
+                  </div>
+                </div>
+                <Skeleton shape="text" count={3} />
+                <Skeleton height={200} rounded={true} />
+                <div class="flex gap-2">
+                  <Skeleton width={80} height={32} rounded={true} />
+                  <Skeleton width={80} height={32} rounded={true} />
+                  <Skeleton width={80} height={32} rounded={true} />
+                </div>
+              </div>
+            </div>
+
+            {/* Product Card Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Product Card Loading</h4>
+              <div class="space-y-3">
+                <Skeleton height={200} rounded={true} />
+                <Skeleton shape="text" width="80%" />
+                <Skeleton shape="text" width="60%" />
+                <div class="flex items-center justify-between mt-3">
+                  <Skeleton width={60} height={24} />
+                  <Skeleton width={100} height={36} rounded={true} />
+                </div>
+              </div>
+            </div>
+
+            {/* List Items Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">List Items Loading</h4>
+              <div class="space-y-4">
+                {[1, 2, 3].map(() => (
+                  <div class="flex items-center gap-3">
+                    <Skeleton circle={true} width={48} height={48} />
+                    <div class="flex-1">
+                      <Skeleton shape="text" width="70%" class="mb-1" />
+                      <Skeleton shape="text" width="40%" />
+                    </div>
+                    <Skeleton width={24} height={24} circle={true} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Table Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Table Loading</h4>
+              <div class="space-y-2">
+                <div class="grid grid-cols-4 gap-4">
+                  <Skeleton height={40} />
+                  <Skeleton height={40} />
+                  <Skeleton height={40} />
+                  <Skeleton height={40} />
+                </div>
+                {[1, 2, 3, 4].map(() => (
+                  <div class="grid grid-cols-4 gap-4">
+                    <Skeleton shape="text" />
+                    <Skeleton shape="text" />
+                    <Skeleton shape="text" />
+                    <Skeleton shape="text" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Form Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Form Loading</h4>
+              <div class="space-y-4">
+                <div>
+                  <Skeleton shape="text" width="20%" class="mb-2" />
+                  <Skeleton height={40} rounded={true} />
+                </div>
+                <div>
+                  <Skeleton shape="text" width="25%" class="mb-2" />
+                  <Skeleton height={40} rounded={true} />
+                </div>
+                <div>
+                  <Skeleton shape="text" width="30%" class="mb-2" />
+                  <Skeleton height={100} rounded={true} />
+                </div>
+                <div class="flex gap-3">
+                  <Skeleton width={100} height={40} rounded={true} />
+                  <Skeleton width={100} height={40} rounded={true} />
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Dashboard Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Stats Dashboard Loading</h4>
+              <div class="grid grid-cols-3 gap-4">
+                {[1, 2, 3].map(() => (
+                  <div class="p-4 border rounded-lg space-y-2">
+                    <Skeleton shape="text" width="60%" />
+                    <Skeleton height={48} width="80%" />
+                    <Skeleton shape="text" width="40%" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Avatar Group Loading */}
+            <div class="p-4 border rounded-lg">
+              <h4 class="text-sm font-semibold mb-3">Avatar Group Loading</h4>
+              <div class="flex -space-x-2">
+                <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+                <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+                <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+                <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+                <Skeleton circle={true} width={40} height={40} class="border-2 border-white" />
+              </div>
             </div>
           </div>
         </section>

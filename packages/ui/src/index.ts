@@ -14,6 +14,7 @@ export { OverlayManager, overlay } from './components/overlay';
 export { PercentageInput } from './components/percentage-input';
 export { Progress } from './components/progress';
 export { Select } from './components/select';
+export { Skeleton } from './components/skeleton';
 export { Switch } from './components/switch';
 export { Tabs } from './components/tab/';
 export { Table } from './components/table/table';

@@ -66,8 +66,7 @@ Abaixo está a lista de componentes que devem ser implementados, organizados por
 - [x] **Badge**
 - [x] **Chip**
 - [x] **Progress**
-- [ ] **Skeleton**
-- [ ] **Spinner/Loader**
+- [x] **Skeleton**
 - [x] **Toast**
 - [ ] **Tooltip**
 - [ ] **Popover**
